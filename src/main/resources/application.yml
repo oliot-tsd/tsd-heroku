@@ -1,0 +1,10 @@
+---
+spring:
+  data:
+    mongodb:
+      uri: ${MONGODB_URI:mongodb://localhost/trusted_data}
+  jackson:
+    default-property-inclusion: non_null
+
+server:
+  port: ${PORT:8080}
