@@ -52,10 +52,8 @@ public class QueryByGtinService {
     @Autowired
     TSD_ProductDataRepository repository;
 
-    @RequestMapping("/insert/{Gtin}")
-    public ResponseEntity<?> Insert(
-            @PathVariable String Gtin) {
-
+    @RequestMapping("/insert")
+    public ResponseEntity<?> insertProductData() {
         // START: Product Data
         TSD_ProductData data = new TSD_ProductData(
                 "12345678912345",
