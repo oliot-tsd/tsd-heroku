@@ -16,8 +16,11 @@
 
 package org.oliot.heroku.tsd.models.modules.BasicProductInformation;
 
-import org.oliot.heroku.tsd.models.common.LanguageCode;
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.Setter;
 import org.oliot.heroku.tsd.models.common.Measurement;
+import org.springframework.data.annotation.PersistenceConstructor;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
@@ -25,6 +28,8 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
+
+@Data
 public class TSD_ImageLink {
     /**
      * Uniform Resource Locator (URL) that references a World-Wide Web
@@ -44,7 +49,8 @@ public class TSD_ImageLink {
      * Language codes specifying the language(s) for which this image applies,
      * or omitted if this image applies to all languages.
      */
-    private List<LanguageCode> languageCodes;
+    @Setter(AccessLevel.NONE)
+    private List<String> languageCodes;
 
     /**
      * The number of pixels along the vertical axis of the image.
@@ -64,18 +70,19 @@ public class TSD_ImageLink {
      */
     private Measurement fileSize;
 
+    @PersistenceConstructor
     public TSD_ImageLink
-            (URI url, TSD_ImageTypeCode code) {
+            (URI url, TSD_ImageTypeCode imageTypeCode) {
         this.url = url;
-        this.imageTypeCode = code;
+        this.imageTypeCode = imageTypeCode;
     }
 
     public TSD_ImageLink
-    addLanguageCode(LanguageCode code) {
+    addLanguageCode(String languageCode) {
         if (this.languageCodes == null) {
-            this.languageCodes = new ArrayList<LanguageCode>();
+            this.languageCodes = new ArrayList<>();
         }
-        this.languageCodes.add(code);
+        this.languageCodes.add(languageCode);
         return this;
     }
 }

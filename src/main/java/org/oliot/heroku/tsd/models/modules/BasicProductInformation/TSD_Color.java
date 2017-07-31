@@ -16,15 +16,20 @@
 
 package org.oliot.heroku.tsd.models.modules.BasicProductInformation;
 
-import org.oliot.heroku.tsd.models.common.Description80;
 
-import java.util.ArrayList;
-import java.util.List;
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.Setter;
+import org.springframework.data.annotation.PersistenceConstructor;
+
+import java.util.HashMap;
+import java.util.Map;
 
 //FIXME: This class is not compatible with GS1 TSD standard
 //   Contact GS1 Source working group to point out the problems in TSD_Colour structure:
 //     1. Cardinality of at-least one element should be 1
 //     2. Value of TSD_ColourCode should be simple codes and not text strings (e.g. containing ® symbol)
+@Data
 public class TSD_Color {
     /**
      * A code depicting the colour of an object according to a specified code list.
@@ -34,19 +39,21 @@ public class TSD_Color {
     /**
      * A description of a colour of an object.
      */
-    private List<Description80> colorDescription;
+    @Setter(AccessLevel.NONE)
+    private Map<String, String> colorDescription;
 
+    @PersistenceConstructor
     public TSD_Color
-            (TSD_ColorCode code) {
-        this.colorCode = code;
+            (TSD_ColorCode colorCode) {
+        this.colorCode = colorCode;
     }
 
     public TSD_Color
-    addColorDescription(Description80 description) {
+    addColorDescription(String languageCode, String description) {
         if (this.colorDescription == null) {
-            this.colorDescription = new ArrayList<Description80>();
+            this.colorDescription = new HashMap<>();
         }
-        this.colorDescription.add(description);
+        this.colorDescription.put(languageCode, description);
         return this;
     }
 }

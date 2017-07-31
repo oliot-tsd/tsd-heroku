@@ -16,18 +16,15 @@
 
 package org.oliot.heroku.tsd.models.modules.BasicProductInformation;
 
+import lombok.AccessLevel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.oliot.heroku.tsd.models.common.Description2500;
-import org.oliot.heroku.tsd.models.common.Description35;
-import org.oliot.heroku.tsd.models.common.Description500;
-import org.oliot.heroku.tsd.models.common.Description80;
+import lombok.Setter;
 import org.oliot.heroku.tsd.models.modules.TSD_ProductDataModuleFactory;
 import org.springframework.data.annotation.PersistenceConstructor;
 
 import javax.validation.constraints.Pattern;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * The Basic Product Information Module carries the basic information
@@ -41,14 +38,16 @@ public class TSD_BasicProductInformationTypeModule implements TSD_ProductDataMod
      * Each Description80 structure SHALL have a different language code,
      * and SHALL represent presentations of the same value in different languages.
      */
-    private List<Description80> productName;
+    @Setter(AccessLevel.NONE)
+    private Map<String, String> productName;
 
     /**
      * Consumer-friendly marketing detailed description of the product.
      * Each Description2500 structure SHALL have a different language code,
      * and SHALL represent presentations of the same value in different languages.
      */
-    private List<Description2500> consumerMarketingDescription;
+    @Setter(AccessLevel.NONE)
+    private Map<String, String> consumerMarketingDescription;
 
     /**
      * 8-digit code specifying a product category
@@ -63,17 +62,20 @@ public class TSD_BasicProductInformationTypeModule implements TSD_ProductDataMod
      * For example for a food product in order to distinguish it from other foods
      * according to country specific regulations.
      */
-    private List<Description500> regulatedProductName;
+    @Setter(AccessLevel.NONE)
+    private Map<String, String> regulatedProductName;
 
     /**
      * The function of the product.
      */
-    private Description35 functionalName;
+    @Setter(AccessLevel.NONE)
+    private Map<String, String> functionalName;
 
     /**
      * Provides a code to identify the variant type of the product (e.g. Flavour).
      */
-    private List<TSD_TradeItemVariantTypeCode> tradeItemVariantTypeCode;
+    @Setter(AccessLevel.NONE)
+    private Set<TSD_TradeItemVariantTypeCode> tradeItemVariantTypeCode;
 
     /**
      * The brand name of the product.
@@ -83,11 +85,13 @@ public class TSD_BasicProductInformationTypeModule implements TSD_ProductDataMod
     /**
      * URLs linking to product information provided by the brand owner.
      */
+    @Setter(AccessLevel.NONE)
     private List<TSD_ProductInformationLink> productInformationLinks;
 
     /**
      * Images provided by the brand owner
      */
+    @Setter(AccessLevel.NONE)
     private List<TSD_ImageLink> imageLinks;
 
     /**
@@ -95,55 +99,57 @@ public class TSD_BasicProductInformationTypeModule implements TSD_ProductDataMod
      * (for example for the brand owner or importer, distributor, ..).
      * This information MAY be repeated for different parties presented on the packaging.
      */
+    @Setter(AccessLevel.NONE)
     private List<TSD_PackagingSignatureLine> packagingSignatureLines;
 
     /**
      * Information specifying a colour in text and / or coded format.
      */
+    @Setter(AccessLevel.NONE)
     private List<TSD_Color> colors;
 
     public TSD_BasicProductInformationTypeModule
-            (Description80 productName, TSD_BrandNameInformation brandNameInformation) {
-        this.productName = new ArrayList<Description80>();
-        this.productName.add(productName);
+            (String languageCode, String productName, TSD_BrandNameInformation brandNameInformation) {
+        this.productName = new HashMap<>();
+        this.productName.put(languageCode, productName);
         this.brandNameInformation = brandNameInformation;
     }
 
     @PersistenceConstructor
     private TSD_BasicProductInformationTypeModule
-            (List<Description80> productName, TSD_BrandNameInformation brandNameInformation) {
+            (Map<String, String> productName, TSD_BrandNameInformation brandNameInformation) {
         this.productName = productName;
         this.brandNameInformation = brandNameInformation;
     }
 
     public TSD_BasicProductInformationTypeModule
-    addProductName(Description80 description) {
-        this.productName.add(description);
+    addProductName(String languageCode, String description) {
+        this.productName.put(languageCode, description);
         return this;
     }
 
     public TSD_BasicProductInformationTypeModule
-    addConsumerMarketingDescription(Description2500 description) {
+    addConsumerMarketingDescription(String languageCode, String description) {
         if (this.consumerMarketingDescription == null) {
-            this.consumerMarketingDescription = new ArrayList<Description2500>();
+            this.consumerMarketingDescription = new HashMap<>();
         }
-        this.consumerMarketingDescription.add(description);
+        this.consumerMarketingDescription.put(languageCode, description);
         return this;
     }
 
     public TSD_BasicProductInformationTypeModule
-    addRegulatedProductName(Description500 description) {
+    addRegulatedProductName(String languageCode, String name) {
         if (this.regulatedProductName == null) {
-            this.regulatedProductName = new ArrayList<Description500>();
+            this.regulatedProductName = new HashMap<>();
         }
-        this.regulatedProductName.add(description);
+        this.regulatedProductName.put(languageCode, name);
         return this;
     }
 
     public TSD_BasicProductInformationTypeModule
     addTradeItemVariantTypeCode(TSD_TradeItemVariantTypeCode code) {
         if (this.tradeItemVariantTypeCode == null) {
-            this.tradeItemVariantTypeCode = new ArrayList<TSD_TradeItemVariantTypeCode>();
+            this.tradeItemVariantTypeCode = new HashSet<>();
         }
         this.tradeItemVariantTypeCode.add(code);
         return this;
@@ -152,7 +158,7 @@ public class TSD_BasicProductInformationTypeModule implements TSD_ProductDataMod
     public TSD_BasicProductInformationTypeModule
     addProductInformationLink(TSD_ProductInformationLink link) {
         if (this.productInformationLinks == null) {
-            this.productInformationLinks = new ArrayList<TSD_ProductInformationLink>();
+            this.productInformationLinks = new ArrayList<>();
         }
         this.productInformationLinks.add(link);
         return this;
@@ -161,7 +167,7 @@ public class TSD_BasicProductInformationTypeModule implements TSD_ProductDataMod
     public TSD_BasicProductInformationTypeModule
     addImageLink(TSD_ImageLink link) {
         if (this.imageLinks == null) {
-            this.imageLinks = new ArrayList<TSD_ImageLink>();
+            this.imageLinks = new ArrayList<>();
         }
         this.imageLinks.add(link);
         return this;
@@ -170,7 +176,7 @@ public class TSD_BasicProductInformationTypeModule implements TSD_ProductDataMod
     public TSD_BasicProductInformationTypeModule
     addPackagingSignatureLine(TSD_PackagingSignatureLine signature) {
         if (this.packagingSignatureLines == null) {
-            this.packagingSignatureLines = new ArrayList<TSD_PackagingSignatureLine>();
+            this.packagingSignatureLines = new ArrayList<>();
         }
         this.packagingSignatureLines.add(signature);
         return this;
@@ -179,10 +185,27 @@ public class TSD_BasicProductInformationTypeModule implements TSD_ProductDataMod
     public TSD_BasicProductInformationTypeModule
     addColour(TSD_Color color) {
         if (this.colors == null) {
-            this.colors = new ArrayList<TSD_Color>();
+            this.colors = new ArrayList<>();
         }
         this.colors.add(color);
         return this;
+    }
+
+    public TSD_BasicProductInformationTypeModule
+    setFunctionalName(String languageCode, String name) {
+        if (this.functionalName == null) {
+            this.functionalName = new HashMap<>();
+        }
+        /* Allow only one functional name */
+        //TODO: it seems weird to provide a functional name in
+        //only 1 language, but the cardinality on p.10 is 0..1
+        this.functionalName.clear();
+        this.functionalName.put(languageCode, name);
+        return this;
+    }
+
+    public String getFunctionalName(String languageCode) {
+        return this.functionalName.get(languageCode);
     }
 
     @Override

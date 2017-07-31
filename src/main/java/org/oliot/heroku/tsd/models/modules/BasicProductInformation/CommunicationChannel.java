@@ -16,9 +16,13 @@
 
 package org.oliot.heroku.tsd.models.modules.BasicProductInformation;
 
+import lombok.Data;
+import org.springframework.data.annotation.PersistenceConstructor;
+
 import javax.validation.constraints.Size;
 
 
+@Data
 public class CommunicationChannel {
     /**
      * Code specifying the type of communication channel, for example TELEPHONE.
@@ -38,9 +42,10 @@ public class CommunicationChannel {
     @Size(min = 1, max = 200)
     private String communicationChannelValue;
 
+    @PersistenceConstructor
     public CommunicationChannel
-            (CommunicationChannelCode code, String value) {
-        this.communicationChannelCode = code;
-        this.communicationChannelValue = value;
+            (CommunicationChannelCode communicationChannelCode, String communicationChannelValue) {
+        this.communicationChannelCode = communicationChannelCode;
+        this.communicationChannelValue = communicationChannelValue;
     }
 }

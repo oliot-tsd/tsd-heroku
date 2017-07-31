@@ -18,6 +18,8 @@ package org.oliot.heroku.tsd.models.modules.BasicProductInformation;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import javax.validation.constraints.Pattern;
 
@@ -36,4 +38,26 @@ public class TSD_ImageTypeCode {
     @Pattern(regexp = "LOGO|OUT_OF_PACKAGE_IMAGE|" +
             "PRODUCT_IMAGE|PRODUCT_LABEL_IMAGE", flags = Pattern.Flag.CASE_INSENSITIVE)
     private final String value;
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this)
+            return true;
+        if (!(obj instanceof TSD_ImageTypeCode)) {
+            return false;
+        }
+
+        TSD_ImageTypeCode code = (TSD_ImageTypeCode) obj;
+
+        return new EqualsBuilder()
+                .append(value, code.value)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(17, 37)
+                .append(value)
+                .toHashCode();
+    }
 }

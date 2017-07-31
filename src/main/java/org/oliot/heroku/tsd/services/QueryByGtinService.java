@@ -20,13 +20,10 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.oliot.heroku.tsd.models.TSD_ProductData;
 import org.oliot.heroku.tsd.models.TSD_ProductDataRecord;
 import org.oliot.heroku.tsd.models.TSD_ProductDataRepository;
-import org.oliot.heroku.tsd.models.common.Description80;
-import org.oliot.heroku.tsd.models.common.FormattedDescription1000;
-import org.oliot.heroku.tsd.models.common.LanguageCode;
+import org.oliot.heroku.tsd.models.common.FormattedDescription;
 import org.oliot.heroku.tsd.models.modules.AllergenInformation.TSD_AllergenInformationTypeModule;
 import org.oliot.heroku.tsd.models.modules.AllergenInformation.TSD_AllergenRelatedInformation;
-import org.oliot.heroku.tsd.models.modules.BasicProductInformation.TSD_BasicProductInformationTypeModule;
-import org.oliot.heroku.tsd.models.modules.BasicProductInformation.TSD_BrandNameInformation;
+import org.oliot.heroku.tsd.models.modules.BasicProductInformation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,6 +32,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
+import java.net.URI;
 
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
@@ -59,19 +57,50 @@ public class QueryByGtinService {
                 "1234567891234",
                 "Information Provider Name"
         );
-        // Basic Information
+        // START: Basic Information
+        TSD_BrandNameInformation brand = new TSD_BrandNameInformation("Brand Name");
         TSD_BasicProductInformationTypeModule basic = new TSD_BasicProductInformationTypeModule(
-                new Description80("Product Name", new LanguageCode("en")),
-                new TSD_BrandNameInformation("Brand Name")
-        );
+                "en", "Product Name", brand);
+        // productName
+        basic.addProductName("kr", "Korean Product Name");
+        basic.addProductName("fr", "French Product Name");
+        // consumerMarketingDescription
+        basic.addConsumerMarketingDescription("en", "Consumer Market Description");
+        basic.addConsumerMarketingDescription("kr", "Korean Consumer Market Description");
+        basic.addConsumerMarketingDescription("fr", "French Consumer Market Description");
+        // gpcCategoryCode
+        basic.setGpcCategoryCode("12345678");
+        // regulatedProductName
+        basic.addRegulatedProductName("en", "Regulated Product Name");
+        basic.addRegulatedProductName("kr", "Korean Regulated Product Name");
+        basic.addRegulatedProductName("fr", "French Regulated Product Name");
+        // functionalName
+        basic.setFunctionalName("en", "Functional Name");
+        // tradeItemVariantTypeCode
+        basic.addTradeItemVariantTypeCode(new TSD_TradeItemVariantTypeCode("FLAVOR"));
+        basic.addTradeItemVariantTypeCode(new TSD_TradeItemVariantTypeCode("SCENT"));
+        // brandNameInformation
+        brand.addLanguageSpecificBrandName("en", "English specific brand name");
+        brand.addLanguageSpecificBrandName("kr", "Korean specific brand name");
+        brand.setSubBrand("Sub Brand");
+        brand.addLanguageSpecificSubbrandName("en", "English specific subbrand name");
+        brand.addLanguageSpecificSubbrandName("kr", "Korean specific subbrand name");
+        // productInformationLink
+        try {
+            basic.addProductInformationLink(new TSD_ProductInformationLink(
+                    new URI("http://www.google.com"),
+                    new TSD_ProductInformationTypeCode("AUDIO")
+            ));
+        } catch (Exception e) {
+        }
         // Product Data Record
         TSD_ProductDataRecord record = new TSD_ProductDataRecord(basic);
 
         // Allergen Information
         TSD_AllergenInformationTypeModule allergen = new TSD_AllergenInformationTypeModule(
                 new TSD_AllergenRelatedInformation(
-                        new FormattedDescription1000("Formatted Description",
-                                new LanguageCode("en"))
+                        "en",
+                        new FormattedDescription("Formatted Description")
                 )
         );
         record.addModule(allergen);

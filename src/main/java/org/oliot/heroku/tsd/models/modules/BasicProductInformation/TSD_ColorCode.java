@@ -18,8 +18,11 @@ package org.oliot.heroku.tsd.models.modules.BasicProductInformation;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import javax.validation.constraints.Pattern;
+
 
 @Getter
 @RequiredArgsConstructor
@@ -71,4 +74,26 @@ public class TSD_ColorCode {
     @Pattern(regexp = "NRF|NCS|IFPS|PMS|PPCS|PHCS" +
             "|PTCS|BUYER|SELLER|WWS|RAL", flags = Pattern.Flag.CASE_INSENSITIVE)
     private final String value;
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this)
+            return true;
+        if (!(obj instanceof TSD_ColorCode)) {
+            return false;
+        }
+
+        TSD_ColorCode code = (TSD_ColorCode) obj;
+
+        return new EqualsBuilder()
+                .append(value, code.value)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(17, 37)
+                .append(value)
+                .toHashCode();
+    }
 }

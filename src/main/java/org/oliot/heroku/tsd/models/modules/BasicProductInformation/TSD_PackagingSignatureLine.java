@@ -16,10 +16,17 @@
 
 package org.oliot.heroku.tsd.models.modules.BasicProductInformation;
 
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.Setter;
+import org.springframework.data.annotation.PersistenceConstructor;
+
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
+
+@Data
 public class TSD_PackagingSignatureLine {
     /**
      * Code specifying the role of the party or contact.
@@ -54,17 +61,19 @@ public class TSD_PackagingSignatureLine {
      * Communication details for the party or contact.
      * MAY be repeated for different communication channel types.
      */
+    @Setter(AccessLevel.NONE)
     private List<CommunicationChannel> communicationChannels;
 
+    @PersistenceConstructor
     public TSD_PackagingSignatureLine
-            (TSD_PartyContactRoleCode code) {
-        this.partyContactRoleCode = code;
+            (TSD_PartyContactRoleCode partyContactRoleCode) {
+        this.partyContactRoleCode = partyContactRoleCode;
     }
 
     public TSD_PackagingSignatureLine
     addCommunicationChannel(CommunicationChannel channel) {
         if (this.communicationChannels == null) {
-            this.communicationChannels = new ArrayList<CommunicationChannel>();
+            this.communicationChannels = new ArrayList<>();
         }
         this.communicationChannels.add(channel);
         return this;

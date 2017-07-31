@@ -16,22 +16,17 @@
 
 package org.oliot.heroku.tsd.models.common;
 
-import lombok.Getter;
+import lombok.Data;
 import org.springframework.data.annotation.PersistenceConstructor;
 
 
-@Getter
-public final class Description70 {
+@Data
+public final class FormattedDescription {
     private final String value;
-    private final LanguageCode languageCode;
+    private String formattingPattern;
 
     @PersistenceConstructor
-    public Description70(String value, LanguageCode languageCode) {
-        if (value.length() <= 70) {
-            this.value = value;
-            this.languageCode = languageCode;
-        } else {
-            throw new IllegalArgumentException("Invalid Description70 value");
-        }
+    public FormattedDescription(String value) {
+        this.value = value;
     }
 }

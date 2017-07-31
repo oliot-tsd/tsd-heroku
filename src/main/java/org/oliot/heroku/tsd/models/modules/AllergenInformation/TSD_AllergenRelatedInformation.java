@@ -16,12 +16,16 @@
 
 package org.oliot.heroku.tsd.models.modules.AllergenInformation;
 
+import lombok.AccessLevel;
 import lombok.Data;
-import org.oliot.heroku.tsd.models.common.FormattedDescription1000;
+import lombok.Setter;
+import org.oliot.heroku.tsd.models.common.FormattedDescription;
 import org.springframework.data.annotation.PersistenceConstructor;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 //FIXME: This class is not compatible with GS1 TSD standard
@@ -36,7 +40,8 @@ public class TSD_AllergenRelatedInformation {
      * language code, and SHALL represent presentations
      * of the same value in different languages.
      */
-    private List<FormattedDescription1000> allergenStatements;
+    @Setter(AccessLevel.NONE)
+    private Map<String, FormattedDescription> allergenStatements;
 
     /**
      * Agency that controls the allergen definition.
@@ -52,23 +57,24 @@ public class TSD_AllergenRelatedInformation {
     /**
      * Detailed information per individual allergen.
      */
+    @Setter(AccessLevel.NONE)
     private List<TSD_Allergen> allergens;
 
     public TSD_AllergenRelatedInformation
-            (FormattedDescription1000 statement) {
-        this.allergenStatements = new ArrayList<FormattedDescription1000>();
-        this.allergenStatements.add(statement);
+            (String languageCode, FormattedDescription statement) {
+        this.allergenStatements = new HashMap<>();
+        this.allergenStatements.put(languageCode, statement);
     }
 
     @PersistenceConstructor
     private TSD_AllergenRelatedInformation
-            (List<FormattedDescription1000> allergenStatements) {
+            (Map<String, FormattedDescription> allergenStatements) {
         this.allergenStatements = allergenStatements;
     }
 
     public TSD_AllergenRelatedInformation
-    addAllergenStatement(FormattedDescription1000 statement) {
-        this.allergenStatements.add(statement);
+    addAllergenStatement(String languageCode, FormattedDescription statement) {
+        this.allergenStatements.put(languageCode, statement);
         return this;
     }
 

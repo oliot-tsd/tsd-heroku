@@ -16,11 +16,11 @@
 
 package org.oliot.heroku.tsd.models.common;
 
-import lombok.Getter;
+import lombok.Data;
 import org.springframework.data.annotation.PersistenceConstructor;
 
 
-@Getter
+@Data
 public final class Measurement {
     private final float value;
     private final String unit;

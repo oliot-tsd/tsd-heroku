@@ -18,6 +18,8 @@ package org.oliot.heroku.tsd.models.modules.BasicProductInformation;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import javax.validation.constraints.Pattern;
 
@@ -51,4 +53,26 @@ public class TSD_PartyContactRoleCode {
             "MANUFACTURER_OF_GOODS|MANUFACTURING_PLANT|REGISTERED_AGENT|" +
             "WHOLESALER|CXC", flags = Pattern.Flag.CASE_INSENSITIVE)
     private final String value;
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this)
+            return true;
+        if (!(obj instanceof TSD_PartyContactRoleCode)) {
+            return false;
+        }
+
+        TSD_PartyContactRoleCode code = (TSD_PartyContactRoleCode) obj;
+
+        return new EqualsBuilder()
+                .append(value, code.value)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(17, 37)
+                .append(value)
+                .toHashCode();
+    }
 }

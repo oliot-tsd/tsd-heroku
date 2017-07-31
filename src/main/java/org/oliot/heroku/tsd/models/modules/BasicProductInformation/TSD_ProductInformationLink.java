@@ -16,14 +16,18 @@
 
 package org.oliot.heroku.tsd.models.modules.BasicProductInformation;
 
-
-import org.oliot.heroku.tsd.models.common.LanguageCode;
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.Setter;
+import org.springframework.data.annotation.PersistenceConstructor;
 
 import javax.validation.constraints.Size;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
+
+@Data
 public class TSD_ProductInformationLink {
     /**
      * Uniform Resource Locator (URL) that references a World-Wide Web resource
@@ -43,20 +47,22 @@ public class TSD_ProductInformationLink {
      * Language codes specifying the language(s) for which this URL applies,
      * or omitted if this URL applies to all languages
      */
-    private List<LanguageCode> languageCodes;
+    @Setter(AccessLevel.NONE)
+    private List<String> languageCodes;
 
+    @PersistenceConstructor
     public TSD_ProductInformationLink
-            (URI url, TSD_ProductInformationTypeCode code) {
+            (URI url, TSD_ProductInformationTypeCode productInformationTypeCode) {
         this.url = url;
-        this.productInformationTypeCode = code;
+        this.productInformationTypeCode = productInformationTypeCode;
     }
 
     public TSD_ProductInformationLink
-    addLanguageCode(LanguageCode code) {
+    addLanguageCode(String languageCode) {
         if (this.languageCodes == null) {
-            this.languageCodes = new ArrayList<LanguageCode>();
+            this.languageCodes = new ArrayList<>();
         }
-        this.languageCodes.add(code);
+        this.languageCodes.add(languageCode);
         return this;
     }
 }

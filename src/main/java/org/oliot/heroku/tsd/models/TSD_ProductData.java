@@ -16,7 +16,9 @@
 
 package org.oliot.heroku.tsd.models;
 
+import lombok.AccessLevel;
 import lombok.Data;
+import lombok.Setter;
 import org.springframework.data.annotation.PersistenceConstructor;
 import org.springframework.data.mongodb.core.index.CompoundIndex;
 import org.springframework.data.mongodb.core.index.CompoundIndexes;
@@ -70,6 +72,7 @@ public class TSD_ProductData {
      * GTIN for the specified target market. If more than one product data record
      * is included, each describes a different variant of the product.
      */
+    @Setter(AccessLevel.NONE)
     private List<TSD_ProductDataRecord> productDataRecords;
 
     @PersistenceConstructor
@@ -81,7 +84,7 @@ public class TSD_ProductData {
         this.targetMarket = targetMarket;
         this.informationProviderGLN = informationProviderGLN;
         this.informationProviderName = informationProviderName;
-        this.productDataRecords = new ArrayList<TSD_ProductDataRecord>();
+        this.productDataRecords = new ArrayList<>();
     }
 
     public TSD_ProductData

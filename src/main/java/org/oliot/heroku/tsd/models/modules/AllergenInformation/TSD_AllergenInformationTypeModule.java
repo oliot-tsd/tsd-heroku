@@ -16,8 +16,10 @@
 
 package org.oliot.heroku.tsd.models.modules.AllergenInformation;
 
+import lombok.AccessLevel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Setter;
 import org.oliot.heroku.tsd.models.modules.TSD_ProductDataModuleFactory;
 import org.springframework.data.annotation.PersistenceConstructor;
 
@@ -37,11 +39,12 @@ public class TSD_AllergenInformationTypeModule implements TSD_ProductDataModuleF
      * subject to intolerance when consumed. The allergy information refers to specified
      * regulations that apply to the target market to which the item information is published.
      */
+    @Setter(AccessLevel.NONE)
     private List<TSD_AllergenRelatedInformation> allergenRelatedInformations;
 
     public TSD_AllergenInformationTypeModule
             (TSD_AllergenRelatedInformation information) {
-        this.allergenRelatedInformations = new ArrayList<TSD_AllergenRelatedInformation>();
+        this.allergenRelatedInformations = new ArrayList<>();
         this.allergenRelatedInformations.add(information);
     }
 

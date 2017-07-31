@@ -18,6 +18,8 @@ package org.oliot.heroku.tsd.models.modules.AllergenInformation;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import javax.validation.constraints.Pattern;
 
@@ -99,4 +101,26 @@ public class TSD_AllergenTypeCode {
      */
     @Pattern(regexp = "[A-Z][A-Z]?\\d{2}")
     private final String value;
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this)
+            return true;
+        if (!(obj instanceof TSD_AllergenTypeCode)) {
+            return false;
+        }
+
+        TSD_AllergenTypeCode code = (TSD_AllergenTypeCode) obj;
+
+        return new EqualsBuilder()
+                .append(value, code.value)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(17, 37)
+                .append(value)
+                .toHashCode();
+    }
 }

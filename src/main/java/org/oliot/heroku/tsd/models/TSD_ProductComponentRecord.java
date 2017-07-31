@@ -16,13 +16,16 @@
 
 package org.oliot.heroku.tsd.models;
 
+import lombok.AccessLevel;
 import lombok.Data;
-import org.oliot.heroku.tsd.models.common.Description1000;
+import lombok.Setter;
 import org.oliot.heroku.tsd.models.modules.TSD_ProductDataModuleFactory;
 
 import javax.validation.constraints.Min;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 @Data
@@ -37,12 +40,14 @@ public class TSD_ProductComponentRecord {
      * Free text assigned by the manufacturer to describe the component.
      * Example flavor X, Y, Z.
      */
-    private Description1000 componentDescription;
+    @Setter(AccessLevel.NONE)
+    private Map<String, String> componentDescription;
 
     /**
      * Product data modules.
      * This list SHALL contain at most one module of each module type.
      */
+    @Setter(AccessLevel.NONE)
     private List<TSD_ProductDataModuleFactory> modules;
 
     public TSD_ProductComponentRecord
@@ -53,9 +58,20 @@ public class TSD_ProductComponentRecord {
     public TSD_ProductComponentRecord
     addModule(TSD_ProductDataModuleFactory module) {
         if (this.modules == null) {
-            this.modules = new ArrayList<TSD_ProductDataModuleFactory>();
+            this.modules = new ArrayList<>();
         }
         this.modules.add(module);
+        return this;
+    }
+
+    public TSD_ProductComponentRecord
+    setComponentDescription(String languageCode, String description) {
+        if (this.componentDescription == null) {
+            this.componentDescription = new HashMap<>();
+        }
+        /* Allow only one description */
+        this.componentDescription.clear();
+        this.componentDescription.put(languageCode, description);
         return this;
     }
 }

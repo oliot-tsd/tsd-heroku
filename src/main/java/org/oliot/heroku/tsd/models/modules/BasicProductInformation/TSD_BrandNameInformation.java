@@ -16,13 +16,14 @@
 
 package org.oliot.heroku.tsd.models.modules.BasicProductInformation;
 
+import lombok.AccessLevel;
 import lombok.Data;
-import org.oliot.heroku.tsd.models.common.Description70;
+import lombok.Setter;
 import org.springframework.data.annotation.PersistenceConstructor;
 
 import javax.validation.constraints.Size;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 
 @Data
@@ -36,13 +37,15 @@ public class TSD_BrandNameInformation {
     /**
      * An alternate form of the brand name for a specified language.
      */
-    private List<Description70> languageSpecificBrandNames;
+    @Setter(AccessLevel.NONE)
+    private Map<String, String> languageSpecificBrandNames;
 
     /**
      * A second level of brand expressed in a different language
      * than the primary sub- brand name (subBrand).
      */
-    private List<Description70> languageSpecificSubbrandNames;
+    @Setter(AccessLevel.NONE)
+    private Map<String, String> languageSpecificSubbrandNames;
 
     /**
      * Second level of brand. Can be a trademark.
@@ -60,20 +63,30 @@ public class TSD_BrandNameInformation {
     }
 
     public TSD_BrandNameInformation
-    addLanguageSpecificBrandName(Description70 brand) {
+    addLanguageSpecificBrandName(String languageCode, String brandName) {
         if (this.languageSpecificBrandNames == null) {
-            this.languageSpecificBrandNames = new ArrayList<Description70>();
+            this.languageSpecificBrandNames = new HashMap<>();
         }
-        this.languageSpecificBrandNames.add(brand);
+        this.languageSpecificBrandNames.put(languageCode, brandName);
         return this;
     }
 
     public TSD_BrandNameInformation
-    addLanguageSpecificSubbrandName(Description70 brand) {
+    addLanguageSpecificSubbrandName(String languageCode, String brandName) {
         if (this.languageSpecificSubbrandNames == null) {
-            this.languageSpecificSubbrandNames = new ArrayList<Description70>();
+            this.languageSpecificSubbrandNames = new HashMap<>();
         }
-        this.languageSpecificSubbrandNames.add(brand);
+        this.languageSpecificSubbrandNames.put(languageCode, brandName);
         return this;
+    }
+
+    public String
+    getLanguageSpecificBrandName(String languageCode) {
+        return this.languageSpecificBrandNames.get(languageCode);
+    }
+
+    public String
+    getLanguageSpecificSubbrandName(String languageCode) {
+        return this.languageSpecificSubbrandNames.get(languageCode);
     }
 }
