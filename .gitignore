@@ -25,3 +25,5 @@ nbdist/
 
 ### Env ###
 .env
+
+/src/main/resources/schema/
