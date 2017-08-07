@@ -3623,7 +3623,7 @@
             preparedMeasure = prepareMeasureForLine(cm, lineObj)
         }
 
-        function get(ch, right) {
+        function get (ch, right) {
             var m = measureCharPrepared(cm, preparedMeasure, ch, right ? "right" : "left", varHeight)
             if (right) {
                 m.left = m.right;

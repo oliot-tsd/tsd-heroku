@@ -14,43 +14,29 @@
  * limitations under the License.
  */
 
-package org.oliot.heroku.tsd.services;
+package org.oliot.heroku.tsd.controllers;
 
 import org.oliot.heroku.tsd.models.modules.BasicProductInformationModule.ObjectFactory;
 import org.oliot.heroku.tsd.models.modules.BasicProductInformationModule.TSDBasicProductInformationModuleType;
-import org.oliot.heroku.tsd.models.ProductDataRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.oliot.heroku.tsd.services.ProductDataValidationEventHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.xml.bind.*;
+import javax.xml.XMLConstants;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
+import java.io.File;
 import java.io.StringReader;
 
 
-class MyValidationEventHandler implements ValidationEventHandler {
-
-    public boolean handleEvent(ValidationEvent event) {
-        System.out.println("SEVERITY:  " + event.getSeverity());
-        System.out.println("MESSAGE:  " + event.getMessage());
-        System.out.println("LINKED EXCEPTION:  " + event.getLinkedException());
-        System.out.println("LOCATOR");
-        System.out.println("    LINE NUMBER:  " + event.getLocator().getLineNumber());
-        System.out.println("    COLUMN NUMBER:  " + event.getLocator().getColumnNumber());
-        System.out.println("    OFFSET:  " + event.getLocator().getOffset());
-        System.out.println("    OBJECT:  " + event.getLocator().getObject());
-        System.out.println("    NODE:  " + event.getLocator().getNode());
-        System.out.println("    URL:  " + event.getLocator().getURL());
-        return false;
-    }
-}
-
 @Controller
 public class HomeController {
-
-    @Autowired
-    private ProductDataRepository repository;
 
     @GetMapping("/")
     public String index() {
@@ -60,11 +46,17 @@ public class HomeController {
     @PostMapping("/")
     public String insert(@RequestParam("editor") String xmldata) {
         try {
+            SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+            File schemaFile = new File("src/main/resources/static/schema/tsd/BasicProductInformationModule.xsd");
+            Schema schema = schemaFactory.newSchema(schemaFile);
+
             JAXBContext jaxbContext = JAXBContext.newInstance(ObjectFactory.class);
             Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-            StringReader reader = new StringReader(xmldata);
 
-            unmarshaller.setEventHandler(new MyValidationEventHandler());
+            unmarshaller.setEventHandler(new ProductDataValidationEventHandler());
+            unmarshaller.setSchema(schema);
+
+            StringReader reader = new StringReader(xmldata);
 
             JAXBElement<TSDBasicProductInformationModuleType> jaxbElement
                     = (JAXBElement<TSDBasicProductInformationModuleType>) unmarshaller.unmarshal(reader);
@@ -74,7 +66,7 @@ public class HomeController {
 
             tsdBasicProductInformationModuleType.getProductName().forEach(p -> System.out.println(p.getValue()));
             tsdBasicProductInformationModuleType.getImageLink().forEach(p -> System.out.println(p.getUrl()));
-        } catch (JAXBException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
