@@ -42,7 +42,7 @@ import javax.xml.bind.annotation.XmlType;
  * </pre>
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "DimensionType", propOrder = {
+@XmlType(name = "DimensionType", namespace = "urn:gs1:shared:shared_common:xsd:3", propOrder = {
         "depth",
         "height",
         "width"

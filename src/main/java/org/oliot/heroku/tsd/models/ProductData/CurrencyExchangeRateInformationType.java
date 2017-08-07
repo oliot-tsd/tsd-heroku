@@ -41,7 +41,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * </pre>
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "CurrencyExchangeRateInformationType", propOrder = {
+@XmlType(name = "CurrencyExchangeRateInformationType", namespace = "urn:gs1:shared:shared_common:xsd:3", propOrder = {
         "currencyConversionFromCode",
         "currencyConversionToCode",
         "exchangeRate",

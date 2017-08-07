@@ -56,7 +56,7 @@ import javax.xml.bind.annotation.XmlType;
  * </pre>
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "FinancialAccountType", propOrder = {
+@XmlType(name = "FinancialAccountType", namespace = "urn:gs1:shared:shared_common:xsd:3", propOrder = {
         "financialAccountNumber",
         "financialAccountNumberTypeCode",
         "financialAccountName"

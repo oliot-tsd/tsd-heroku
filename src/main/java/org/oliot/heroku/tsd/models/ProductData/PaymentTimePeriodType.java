@@ -43,7 +43,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * </pre>
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "PaymentTimePeriodType", propOrder = {
+@XmlType(name = "PaymentTimePeriodType", namespace = "urn:gs1:shared:shared_common:xsd:3", propOrder = {
         "dateDue",
         "dayOfMonthDue",
         "timePeriodDue"

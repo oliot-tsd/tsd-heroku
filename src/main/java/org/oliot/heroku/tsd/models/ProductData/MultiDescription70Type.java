@@ -42,7 +42,7 @@ import java.util.List;
  * </pre>
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "MultiDescription70Type", propOrder = {
+@XmlType(name = "MultiDescription70Type", namespace = "urn:gs1:shared:shared_common:xsd:3", propOrder = {
         "description"
 })
 public class MultiDescription70Type {

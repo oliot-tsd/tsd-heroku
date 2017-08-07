@@ -58,7 +58,7 @@ import java.util.List;
  * </pre>
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "TradeItemClassificationType", propOrder = {
+@XmlType(name = "TradeItemClassificationType", namespace = "urn:gs1:shared:shared_common:xsd:3", propOrder = {
         "gpcCategoryCode",
         "additionalTradeItemClassificationCode",
         "gpcCategoryName",

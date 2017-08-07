@@ -53,7 +53,7 @@ import java.math.BigInteger;
  * </pre>
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "DocumentType", propOrder = {
+@XmlType(name = "DocumentType", namespace = "urn:gs1:shared:shared_common:xsd:3", propOrder = {
         "creationDateTime",
         "documentStatusCode",
         "documentActionCode",

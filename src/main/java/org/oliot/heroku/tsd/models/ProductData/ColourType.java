@@ -42,7 +42,7 @@ import java.util.List;
  * </pre>
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ColourType", propOrder = {
+@XmlType(name = "ColourType", namespace = "urn:gs1:shared:shared_common:xsd:3", propOrder = {
         "colourCode",
         "colourDescription"
 })

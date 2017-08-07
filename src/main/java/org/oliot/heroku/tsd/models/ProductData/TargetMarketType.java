@@ -41,7 +41,7 @@ import javax.xml.bind.annotation.XmlType;
  * </pre>
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "TargetMarketType", propOrder = {
+@XmlType(name = "TargetMarketType", namespace = "urn:gs1:shared:shared_common:xsd:3", propOrder = {
         "targetMarketCountryCode",
         "targetMarketSubdivisionCode"
 })

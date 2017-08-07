@@ -42,7 +42,7 @@ import javax.xml.bind.annotation.*;
  * </pre>
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "GS1CodeType", propOrder = {
+@XmlType(name = "GS1CodeType", namespace = "urn:gs1:shared:shared_common:xsd:3", propOrder = {
         "value"
 })
 @XmlSeeAlso({

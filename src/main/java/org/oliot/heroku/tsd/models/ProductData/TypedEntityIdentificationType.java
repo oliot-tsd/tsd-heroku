@@ -40,7 +40,7 @@ import javax.xml.bind.annotation.XmlType;
  * </pre>
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "TypedEntityIdentificationType", propOrder = {
+@XmlType(name = "TypedEntityIdentificationType", namespace = "urn:gs1:shared:shared_common:xsd:3", propOrder = {
         "entityTypeCode"
 })
 public class TypedEntityIdentificationType

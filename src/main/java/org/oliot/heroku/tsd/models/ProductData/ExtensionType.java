@@ -44,7 +44,7 @@ import java.util.List;
  * </pre>
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ExtensionType", propOrder = {
+@XmlType(name = "ExtensionType", namespace = "urn:gs1:shared:shared_common:xsd:3", propOrder = {
         "any"
 })
 public class ExtensionType {

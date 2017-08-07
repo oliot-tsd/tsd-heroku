@@ -68,7 +68,7 @@ import java.util.List;
  * </pre>
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ContactType", propOrder = {
+@XmlType(name = "ContactType", namespace = "urn:gs1:shared:shared_common:xsd:3", propOrder = {
         "contactTypeCode",
         "personName",
         "departmentName",

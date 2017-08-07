@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.XmlType;
  * </pre>
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "IncotermsCodeType")
+@XmlType(name = "IncotermsCodeType", namespace = "urn:gs1:shared:shared_common:xsd:3")
 public class IncotermsCodeType
         extends GS1CodeType {
 

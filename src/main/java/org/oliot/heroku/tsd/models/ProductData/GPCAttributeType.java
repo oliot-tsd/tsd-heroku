@@ -69,7 +69,7 @@ import javax.xml.bind.annotation.XmlType;
  * </pre>
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "GPCAttributeType", propOrder = {
+@XmlType(name = "GPCAttributeType", namespace = "urn:gs1:shared:shared_common:xsd:3", propOrder = {
         "gpcAttributeTypeCode",
         "gpcAttributeValueCode",
         "gpcAttributeTypeName",

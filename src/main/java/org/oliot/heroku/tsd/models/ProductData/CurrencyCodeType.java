@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.XmlType;
  * </pre>
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "CurrencyCodeType")
+@XmlType(name = "CurrencyCodeType", namespace = "urn:gs1:shared:shared_common:xsd:3")
 public class CurrencyCodeType
         extends GS1CodeType {
 

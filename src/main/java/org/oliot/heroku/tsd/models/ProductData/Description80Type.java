@@ -50,7 +50,7 @@ import javax.xml.bind.annotation.*;
  * </pre>
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Description80Type", propOrder = {
+@XmlType(name = "Description80Type", namespace = "urn:gs1:shared:shared_common:xsd:3", propOrder = {
         "value"
 })
 public class Description80Type {

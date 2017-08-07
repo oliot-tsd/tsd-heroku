@@ -56,7 +56,7 @@ import javax.xml.bind.annotation.XmlType;
  * </pre>
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "RangeType", propOrder = {
+@XmlType(name = "RangeType", namespace = "urn:gs1:shared:shared_common:xsd:3", propOrder = {
         "maximum",
         "maximumType",
         "minimum",

@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.XmlType;
  * </pre>
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "AdditionalReturnableAssetIdentificationTypeCodeType")
+@XmlType(name = "AdditionalReturnableAssetIdentificationTypeCodeType", namespace = "urn:gs1:shared:shared_common:xsd:3")
 public class AdditionalReturnableAssetIdentificationTypeCodeType
         extends GS1CodeType {
 

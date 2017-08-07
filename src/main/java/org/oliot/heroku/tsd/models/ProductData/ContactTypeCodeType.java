@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.XmlType;
  * </pre>
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ContactTypeCodeType")
+@XmlType(name = "ContactTypeCodeType", namespace = "urn:gs1:shared:shared_common:xsd:3")
 public class ContactTypeCodeType
         extends GS1CodeType {
 

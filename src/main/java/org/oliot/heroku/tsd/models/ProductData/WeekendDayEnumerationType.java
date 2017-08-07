@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/simpleType>
  * </pre>
  */
-@XmlType(name = "WeekendDayEnumerationType")
+@XmlType(name = "WeekendDayEnumerationType", namespace = "urn:gs1:shared:shared_common:xsd:3")
 @XmlEnum
 public enum WeekendDayEnumerationType {
 

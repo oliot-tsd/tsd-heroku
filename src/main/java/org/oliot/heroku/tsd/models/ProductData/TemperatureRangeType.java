@@ -40,7 +40,7 @@ import javax.xml.bind.annotation.XmlType;
  * </pre>
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "TemperatureRangeType", propOrder = {
+@XmlType(name = "TemperatureRangeType", namespace = "urn:gs1:shared:shared_common:xsd:3", propOrder = {
         "maximumTemperature",
         "minimumTemperature"
 })

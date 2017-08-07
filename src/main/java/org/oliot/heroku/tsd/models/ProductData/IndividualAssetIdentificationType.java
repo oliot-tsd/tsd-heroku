@@ -43,7 +43,7 @@ import java.util.List;
  * </pre>
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "IndividualAssetIdentificationType", propOrder = {
+@XmlType(name = "IndividualAssetIdentificationType", namespace = "urn:gs1:shared:shared_common:xsd:3", propOrder = {
         "giai",
         "additionalIndividualAssetIdentification"
 })

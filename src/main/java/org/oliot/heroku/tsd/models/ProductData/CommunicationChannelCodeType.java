@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.XmlType;
  * </pre>
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "CommunicationChannelCodeType")
+@XmlType(name = "CommunicationChannelCodeType", namespace = "urn:gs1:shared:shared_common:xsd:3")
 public class CommunicationChannelCodeType
         extends GS1CodeType {
 

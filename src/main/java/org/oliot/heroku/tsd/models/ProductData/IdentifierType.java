@@ -66,7 +66,7 @@ import javax.xml.bind.annotation.*;
  * </pre>
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "IdentifierType", propOrder = {
+@XmlType(name = "IdentifierType", namespace = "urn:gs1:shared:shared_common:xsd:3", propOrder = {
         "value"
 })
 public class IdentifierType {

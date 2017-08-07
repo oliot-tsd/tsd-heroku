@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.XmlType;
  * </pre>
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "AdditionalTradeItemIdentificationTypeCodeType")
+@XmlType(name = "AdditionalTradeItemIdentificationTypeCodeType", namespace = "urn:gs1:shared:shared_common:xsd:3")
 public class AdditionalTradeItemIdentificationTypeCodeType
         extends GS1CodeType {
 

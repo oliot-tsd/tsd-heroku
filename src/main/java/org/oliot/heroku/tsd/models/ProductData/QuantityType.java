@@ -51,7 +51,7 @@ import java.math.BigDecimal;
  * </pre>
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "QuantityType", propOrder = {
+@XmlType(name = "QuantityType", namespace = "urn:gs1:shared:shared_common:xsd:3", propOrder = {
         "value"
 })
 public class QuantityType {

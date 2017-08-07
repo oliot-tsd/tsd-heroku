@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/simpleType>
  * </pre>
  */
-@XmlType(name = "ResponseStatusEnumerationType")
+@XmlType(name = "ResponseStatusEnumerationType", namespace = "urn:gs1:shared:shared_common:xsd:3")
 @XmlEnum
 public enum ResponseStatusEnumerationType {
 

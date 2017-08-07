@@ -43,7 +43,7 @@ import java.util.List;
  * </pre>
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "PartyIdentificationType", propOrder = {
+@XmlType(name = "PartyIdentificationType", namespace = "urn:gs1:shared:shared_common:xsd:3", propOrder = {
         "gln",
         "additionalPartyIdentification"
 })

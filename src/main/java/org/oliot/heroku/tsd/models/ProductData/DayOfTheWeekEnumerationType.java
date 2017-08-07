@@ -39,7 +39,7 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/simpleType>
  * </pre>
  */
-@XmlType(name = "DayOfTheWeekEnumerationType")
+@XmlType(name = "DayOfTheWeekEnumerationType", namespace = "urn:gs1:shared:shared_common:xsd:3")
 @XmlEnum
 public enum DayOfTheWeekEnumerationType {
 

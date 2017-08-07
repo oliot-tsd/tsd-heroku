@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.XmlType;
  * </pre>
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "LanguageCodeType")
+@XmlType(name = "LanguageCodeType", namespace = "urn:gs1:shared:shared_common:xsd:3")
 public class LanguageCodeType
         extends GS1CodeType {
 

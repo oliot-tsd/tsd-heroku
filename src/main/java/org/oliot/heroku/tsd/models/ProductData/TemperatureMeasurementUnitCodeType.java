@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.XmlType;
  * </pre>
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "TemperatureMeasurementUnitCodeType")
+@XmlType(name = "TemperatureMeasurementUnitCodeType", namespace = "urn:gs1:shared:shared_common:xsd:3")
 public class TemperatureMeasurementUnitCodeType
         extends GS1CodeType {
 

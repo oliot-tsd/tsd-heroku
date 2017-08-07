@@ -44,7 +44,7 @@ import java.math.BigInteger;
  * </pre>
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "DocumentReferenceType", propOrder = {
+@XmlType(name = "DocumentReferenceType", namespace = "urn:gs1:shared:shared_common:xsd:3", propOrder = {
         "creationDateTime",
         "revisionNumber",
         "lineItemNumber"

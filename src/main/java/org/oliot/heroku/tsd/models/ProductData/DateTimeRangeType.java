@@ -44,7 +44,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * </pre>
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "DateTimeRangeType", propOrder = {
+@XmlType(name = "DateTimeRangeType", namespace = "urn:gs1:shared:shared_common:xsd:3", propOrder = {
         "beginDate",
         "beginTime",
         "endDate",

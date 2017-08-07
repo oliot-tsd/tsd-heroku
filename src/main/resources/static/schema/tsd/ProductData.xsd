@@ -23,6 +23,7 @@ The schema and subsequent updates will be provided on the GS1 websites.
 	</xsd:annotation>
 	<xsd:import namespace="urn:gs1:shared:shared_common:xsd:3" schemaLocation="../shared/SharedCommon.xsd"/>
 	<xsd:import namespace="urn:gs1:tsd:tsd_common:xsd:1" schemaLocation="TSDCommon.xsd"/>
+	<xsd:element name="productData" type="product_data:TSD_ProductDataType"/>
 	<xsd:complexType name="TSD_ProductComponentRecordType">
 		<xsd:sequence>
 			<xsd:element name="componentNumber" type="xsd:nonNegativeInteger"/>

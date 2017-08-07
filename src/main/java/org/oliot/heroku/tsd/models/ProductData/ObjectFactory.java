@@ -16,7 +16,10 @@
 
 package org.oliot.heroku.tsd.models.ProductData;
 
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
+import javax.xml.namespace.QName;
 
 
 /**
@@ -35,6 +38,7 @@ import javax.xml.bind.annotation.XmlRegistry;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _ProductData_QNAME = new QName("urn:gs1:tsd:product_data:xsd:1", "productData");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: org.oliot.heroku.tsd.models.ProductData
@@ -43,17 +47,17 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link TSDProductComponentRecordType }
-     */
-    public TSDProductComponentRecordType createTSDProductComponentRecordType() {
-        return new TSDProductComponentRecordType();
-    }
-
-    /**
      * Create an instance of {@link TSDProductDataType }
      */
     public TSDProductDataType createTSDProductDataType() {
         return new TSDProductDataType();
+    }
+
+    /**
+     * Create an instance of {@link TSDProductComponentRecordType }
+     */
+    public TSDProductComponentRecordType createTSDProductComponentRecordType() {
+        return new TSDProductComponentRecordType();
     }
 
     /**
@@ -782,6 +786,14 @@ public class ObjectFactory {
      */
     public TSDImageTypeCodeType createTSDImageTypeCodeType() {
         return new TSDImageTypeCodeType();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link TSDProductDataType }{@code >}}
+     */
+    @XmlElementDecl(namespace = "urn:gs1:tsd:product_data:xsd:1", name = "productData")
+    public JAXBElement<TSDProductDataType> createProductData(TSDProductDataType value) {
+        return new JAXBElement<TSDProductDataType>(_ProductData_QNAME, TSDProductDataType.class, null, value);
     }
 
 }
