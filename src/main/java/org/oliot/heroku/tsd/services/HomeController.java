@@ -16,8 +16,8 @@
 
 package org.oliot.heroku.tsd.services;
 
-import org.oliot.heroku.tsd.models.BasicProductInformationModule.ObjectFactory;
-import org.oliot.heroku.tsd.models.BasicProductInformationModule.TSDBasicProductInformationModuleType;
+import org.oliot.heroku.tsd.models.modules.BasicProductInformationModule.ObjectFactory;
+import org.oliot.heroku.tsd.models.modules.BasicProductInformationModule.TSDBasicProductInformationModuleType;
 import org.oliot.heroku.tsd.models.ProductDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
