@@ -13,7 +13,9 @@
   "addons": [
     "mongolab:sandbox"
   ],
-  "env": {
-    "BUILDPACK_URL": "heroku/java"
-  }
+  "buildpacks": [
+    {
+      "url": "heroku/java"
+    }
+  ]
 }
