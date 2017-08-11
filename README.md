@@ -3,6 +3,12 @@ GS1 TSD implementation for Research and SMEs
 
 [![Build Status](https://travis-ci.org/oliot-tsd/tsd-heroku.svg?branch=master)](https://travis-ci.org/oliot-tsd/tsd-heroku)
 
+Deploying
+-----------------
+**master** branch is auto deployed [here](https://oliot-tsd.herokuapp.com)
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
 License
 -----------------
 ```text
