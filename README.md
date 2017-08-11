@@ -1,5 +1,7 @@
 # tsd-heroku
-GS1 TSD heroku application for SMEs
+GS1 TSD implementation for Research and SMEs
+
+[![Build Status](https://travis-ci.org/oliot-tsd/tsd-heroku.svg?branch=master)](https://travis-ci.org/oliot-tsd/tsd-heroku)
 
 License
 -----------------
