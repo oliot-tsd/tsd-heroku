@@ -20,9 +20,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.oliot.heroku.tsd.models.schema.*;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.repository.query.Param;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
 
 import javax.xml.XMLConstants;
@@ -33,7 +31,6 @@ import javax.xml.bind.Unmarshaller;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import java.io.File;
-import java.io.StringReader;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

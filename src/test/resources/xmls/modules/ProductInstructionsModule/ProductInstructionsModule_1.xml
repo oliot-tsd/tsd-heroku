@@ -17,8 +17,7 @@
 
 <product_instructions_module:productInstructionsModule
         xmlns:product_instructions_module="urn:gs1:tsd:product_instructions_module:xsd:1"
-        xmlns:shared_common="urn:gs1:shared:shared_common:xsd:3"
-        xmlns:tsd_common="urn:gs1:tsd:tsd_common:xsd:1">
+>
     <consumerUsageInstructions codeListVersion="" languageCode="">consumerUsageInstructions</consumerUsageInstructions>
     <consumerStorageInstructions codeListVersion="" languageCode="">consumerStorageInstructions
     </consumerStorageInstructions>

@@ -17,8 +17,7 @@
 
 <product_quantity_information_module:productQuantityInformationModule
         xmlns:product_quantity_information_module="urn:gs1:tsd:product_quantity_information_module:xsd:1"
-        xmlns:shared_common="urn:gs1:shared:shared_common:xsd:3"
-        xmlns:tsd_common="urn:gs1:tsd:tsd_common:xsd:1">
+>
     <netContent codeListVersion="" measurementUnitCode="">0.0</netContent>
     <drainedWeight codeListVersion="" measurementUnitCode="">0.0</drainedWeight>
     <percentageOfAlcoholByVolume>0.0</percentageOfAlcoholByVolume>

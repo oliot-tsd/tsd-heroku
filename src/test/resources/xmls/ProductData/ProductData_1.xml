@@ -16,8 +16,6 @@
   -->
 
 <product_data:productData xmlns:product_data="urn:gs1:tsd:product_data:xsd:1"
-                          xmlns:shared_common="urn:gs1:shared:shared_common:xsd:3"
-                          xmlns:tsd_common="urn:gs1:tsd:tsd_common:xsd:1"
                           xmlns:basic_product_information_module="urn:gs1:tsd:basic_product_information_module:xsd:1"
                           xmlns:product_allergen_information_module="urn:gs1:tsd:product_allergen_information_module:xsd:1">
     <gtin>12345678912345</gtin>

@@ -17,8 +17,7 @@
 
 <product_claims_and_endorsements_module:productClaimsAndEndorsementsModule
         xmlns:product_claims_and_endorsements_module="urn:gs1:tsd:product_claims_and_endorsements_module:xsd:1"
-        xmlns:shared_common="urn:gs1:shared:shared_common:xsd:3"
-        xmlns:tsd_common="urn:gs1:tsd:tsd_common:xsd:1">
+>
     <regulatoryComplianceCode codeListVersion="">regulatoryComplianceCode</regulatoryComplianceCode>
     <warningStatement codeListVersion="" languageCode="">warningStatement</warningStatement>
     <nutritionalClaimCode codeListVersion="">nutritionalClaimCode</nutritionalClaimCode>

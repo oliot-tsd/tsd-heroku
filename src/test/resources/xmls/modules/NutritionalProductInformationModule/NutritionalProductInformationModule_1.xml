@@ -17,8 +17,7 @@
 
 <nutritional_product_information_module:nutritionalProductInformationModule
         xmlns:nutritional_product_information_module="urn:gs1:tsd:nutritional_product_information_module:xsd:1"
-        xmlns:shared_common="urn:gs1:shared:shared_common:xsd:3"
-        xmlns:tsd_common="urn:gs1:tsd:tsd_common:xsd:1">
+>
     <nutrientHeader>
         <preparationStateCode codeListVersion="">preparationStateCode</preparationStateCode>
         <dailyValueIntakeReference codeListVersion="" languageCode="">dailyValueIntakeReference
