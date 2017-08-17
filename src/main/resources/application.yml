@@ -2,7 +2,7 @@
 spring:
   data:
     mongodb:
-      uri: ${MONGODB_URI:mongodb://localhost/trusted_data}
+      uri: ${MONGODB_URI:mongodb://localhost:27017/trusted_data}
   jackson:
     default-property-inclusion: non_null
 
