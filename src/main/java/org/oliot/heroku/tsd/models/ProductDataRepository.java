@@ -16,7 +16,7 @@
 
 package org.oliot.heroku.tsd.models;
 
-import org.oliot.heroku.tsd.models.ProductData.TSDProductDataType;
+import org.oliot.heroku.tsd.models.schema.TSDProductDataType;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;

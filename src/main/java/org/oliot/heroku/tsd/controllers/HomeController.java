@@ -16,8 +16,8 @@
 
 package org.oliot.heroku.tsd.controllers;
 
-import org.oliot.heroku.tsd.models.modules.BasicProductInformationModule.ObjectFactory;
-import org.oliot.heroku.tsd.models.modules.BasicProductInformationModule.TSDBasicProductInformationModuleType;
+import org.oliot.heroku.tsd.models.schema.ObjectFactory;
+import org.oliot.heroku.tsd.models.schema.TSDBasicProductInformationModuleType;
 import org.oliot.heroku.tsd.services.ProductDataValidationEventHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
