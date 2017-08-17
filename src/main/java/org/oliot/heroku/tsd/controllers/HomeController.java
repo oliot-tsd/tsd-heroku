@@ -46,7 +46,7 @@ public class HomeController {
     public String insert(@RequestParam("editor") String xmldata) {
         try {
             SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-            File schemaFile = new File("src/main/resources/static/schema/tsd/BasicProductInformationModule.xsd");
+            File schemaFile = new File("src/main/java/org/oliot/heroku/tsd/models/schema/tsd/BasicProductInformationModule.xsd");
             Schema schema = schemaFactory.newSchema(schemaFile);
 
             JAXBContext jaxbContext = JAXBContext.newInstance(ObjectFactory.class);

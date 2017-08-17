@@ -39,7 +39,7 @@ public class JaxbTests {
     @Test
     public void testProductData() throws SAXException, JAXBException {
         SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-        File schemaFile = new File("src/main/resources/static/schema/tsd/ProductData.xsd");
+        File schemaFile = new File("src/main/java/org/oliot/heroku/tsd/models/schema/tsd/ProductData.xsd");
         Schema schema = schemaFactory.newSchema(schemaFile);
 
         JAXBContext jaxbContext = JAXBContext.newInstance(ObjectFactory.class);
