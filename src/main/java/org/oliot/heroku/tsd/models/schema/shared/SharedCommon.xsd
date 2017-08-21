@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-  ~ Copyright 2017 Open Language for Internet of Things (Oliot)
-  ~
-  ~ Licensed under the Apache License, Version 2.0 (the "License");
-  ~ you may not use this file except in compliance with the License.
-  ~ You may obtain a copy of the License at
-  ~
-  ~     http://www.apache.org/licenses/LICENSE-2.0
-  ~
-  ~ Unless required by applicable law or agreed to in writing, software
-  ~ distributed under the License is distributed on an "AS IS" BASIS,
-  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  ~ See the License for the specific language governing permissions and
-  ~ limitations under the License.
-  -->
-
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:shared_common="urn:gs1:shared:shared_common:xsd:3" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="urn:gs1:shared:shared_common:xsd:3" version="3.1">
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:shared_common="urn:gs1:shared:shared_common:xsd:3"
+            attributeFormDefault="unqualified" elementFormDefault="unqualified"
+            targetNamespace="urn:gs1:shared:shared_common:xsd:3" version="3.1">
     <xsd:annotation>
         <xsd:documentation><![CDATA[---------------------------
 © Copyright GS1, 2013
@@ -529,7 +515,8 @@ The schema and subsequent updates will be provided on the GS1 websites.
     <xsd:complexType name="ColourType">
         <xsd:sequence>
             <xsd:element minOccurs="0" name="colourCode" type="shared_common:ColourCodeType"/>
-            <xsd:element maxOccurs="unbounded" minOccurs="0" name="colourDescription" type="shared_common:Description80Type"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="colourDescription"
+                         type="shared_common:Description80Type"/>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="CommunicationChannelCodeType">
@@ -561,7 +548,8 @@ The schema and subsequent updates will be provided on the GS1 websites.
     <xsd:complexType name="ConsignmentIdentificationType">
         <xsd:sequence>
             <xsd:element name="ginc" type="shared_common:GINCType"/>
-            <xsd:element maxOccurs="unbounded" minOccurs="0" name="additionalConsignmentIdentification" type="shared_common:AdditionalConsignmentIdentificationType"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="additionalConsignmentIdentification"
+                         type="shared_common:AdditionalConsignmentIdentificationType"/>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="ContactType">
@@ -591,9 +579,12 @@ The schema and subsequent updates will be provided on the GS1 websites.
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
-            <xsd:element maxOccurs="unbounded" minOccurs="0" name="responsibility" type="shared_common:Description70Type"/>
-            <xsd:element maxOccurs="unbounded" minOccurs="0" name="communicationChannel" type="shared_common:CommunicationChannelType"/>
-            <xsd:element maxOccurs="unbounded" minOccurs="0" name="afterHoursCommunicationChannel" type="shared_common:CommunicationChannelType"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="responsibility"
+                         type="shared_common:Description70Type"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="communicationChannel"
+                         type="shared_common:CommunicationChannelType"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="afterHoursCommunicationChannel"
+                         type="shared_common:CommunicationChannelType"/>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="ContactTypeCodeType">
@@ -1037,7 +1028,8 @@ The schema and subsequent updates will be provided on the GS1 websites.
     <xsd:complexType name="IndividualAssetIdentificationType">
         <xsd:sequence>
             <xsd:element name="giai" type="shared_common:GIAIType"/>
-            <xsd:element maxOccurs="unbounded" minOccurs="0" name="additionalIndividualAssetIdentification" type="shared_common:AdditionalIndividualAssetIdentificationType"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="additionalIndividualAssetIdentification"
+                         type="shared_common:AdditionalIndividualAssetIdentificationType"/>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="LanguageCodeType">
@@ -1048,7 +1040,8 @@ The schema and subsequent updates will be provided on the GS1 websites.
     <xsd:complexType name="LogisticUnitIdentificationType">
         <xsd:sequence>
             <xsd:element name="sscc" type="shared_common:SSCCType"/>
-            <xsd:element maxOccurs="unbounded" minOccurs="0" name="additionalLogisticUnitIdentification" type="shared_common:AdditionalLogisticUnitIdentificationType"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="additionalLogisticUnitIdentification"
+                         type="shared_common:AdditionalLogisticUnitIdentificationType"/>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="MeasurementRangeType">
@@ -1097,7 +1090,8 @@ The schema and subsequent updates will be provided on the GS1 websites.
     <xsd:complexType name="PartyIdentificationType">
         <xsd:sequence>
             <xsd:element name="gln" type="shared_common:GLNType"/>
-            <xsd:element maxOccurs="unbounded" minOccurs="0" name="additionalPartyIdentification" type="shared_common:AdditionalPartyIdentificationType"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="additionalPartyIdentification"
+                         type="shared_common:AdditionalPartyIdentificationType"/>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="PartyRoleCodeType">
@@ -1197,19 +1191,22 @@ The schema and subsequent updates will be provided on the GS1 websites.
     <xsd:complexType name="ReturnableAssetIdentificationType">
         <xsd:sequence>
             <xsd:element name="grai" type="shared_common:GRAIType"/>
-            <xsd:element maxOccurs="unbounded" minOccurs="0" name="additionalReturnableAssetIdentification" type="shared_common:AdditionalReturnableAssetIdentificationType"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="additionalReturnableAssetIdentification"
+                         type="shared_common:AdditionalReturnableAssetIdentificationType"/>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="ServiceRelationIdentificationType">
         <xsd:sequence>
             <xsd:element name="gsrn" type="shared_common:GSRNType"/>
-            <xsd:element maxOccurs="unbounded" minOccurs="0" name="additionalServiceRelationIdentification" type="shared_common:AdditionalServiceRelationIdentificationType"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="additionalServiceRelationIdentification"
+                         type="shared_common:AdditionalServiceRelationIdentificationType"/>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="ShipmentIdentificationType">
         <xsd:sequence>
             <xsd:element name="gsin" type="shared_common:GSINType"/>
-            <xsd:element maxOccurs="unbounded" minOccurs="0" name="additionalShipmentIdentification" type="shared_common:AdditionalShipmentIdentificationType"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="additionalShipmentIdentification"
+                         type="shared_common:AdditionalShipmentIdentificationType"/>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="SizeCodeType">
@@ -1265,7 +1262,8 @@ The schema and subsequent updates will be provided on the GS1 websites.
     <xsd:complexType name="TargetMarketType">
         <xsd:sequence>
             <xsd:element name="targetMarketCountryCode" type="shared_common:CountryCodeType"/>
-            <xsd:element minOccurs="0" name="targetMarketSubdivisionCode" type="shared_common:CountrySubdivisionCodeType"/>
+            <xsd:element minOccurs="0" name="targetMarketSubdivisionCode"
+                         type="shared_common:CountrySubdivisionCodeType"/>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="TaxCategoryCodeType">
@@ -1342,7 +1340,8 @@ The schema and subsequent updates will be provided on the GS1 websites.
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
-            <xsd:element maxOccurs="unbounded" minOccurs="0" name="additionalTradeItemClassificationCode" type="shared_common:AdditionalTradeItemClassificationCodeType"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="additionalTradeItemClassificationCode"
+                         type="shared_common:AdditionalTradeItemClassificationCodeType"/>
             <xsd:element minOccurs="0" name="gpcCategoryName">
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
@@ -1357,7 +1356,8 @@ The schema and subsequent updates will be provided on the GS1 websites.
     <xsd:complexType name="TradeItemIdentificationType">
         <xsd:sequence>
             <xsd:element name="gtin" type="shared_common:GTINType"/>
-            <xsd:element maxOccurs="unbounded" minOccurs="0" name="additionalTradeItemIdentification" type="shared_common:AdditionalTradeItemIdentificationType"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="additionalTradeItemIdentification"
+                         type="shared_common:AdditionalTradeItemIdentificationType"/>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="TypedEntityIdentificationType">

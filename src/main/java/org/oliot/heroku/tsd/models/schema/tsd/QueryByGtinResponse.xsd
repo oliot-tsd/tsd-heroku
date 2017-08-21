@@ -1,21 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-  ~ Copyright 2017 Open Language for Internet of Things (Oliot)
-  ~
-  ~ Licensed under the Apache License, Version 2.0 (the "License");
-  ~ you may not use this file except in compliance with the License.
-  ~ You may obtain a copy of the License at
-  ~
-  ~     http://www.apache.org/licenses/LICENSE-2.0
-  ~
-  ~ Unless required by applicable law or agreed to in writing, software
-  ~ distributed under the License is distributed on an "AS IS" BASIS,
-  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  ~ See the License for the specific language governing permissions and
-  ~ limitations under the License.
-  -->
-
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:product_data="urn:gs1:tsd:product_data:xsd:1" xmlns:query_by_gtin_response="urn:gs1:tsd:query_by_gtin_response:xsd:1" xmlns:shared_common="urn:gs1:shared:shared_common:xsd:3" xmlns:tsd_common="urn:gs1:tsd:tsd_common:xsd:1" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="urn:gs1:tsd:query_by_gtin_response:xsd:1" version="1.1">
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:product_data="urn:gs1:tsd:product_data:xsd:1"
+            xmlns:query_by_gtin_response="urn:gs1:tsd:query_by_gtin_response:xsd:1"
+            xmlns:shared_common="urn:gs1:shared:shared_common:xsd:3" xmlns:tsd_common="urn:gs1:tsd:tsd_common:xsd:1"
+            attributeFormDefault="unqualified" elementFormDefault="unqualified"
+            targetNamespace="urn:gs1:tsd:query_by_gtin_response:xsd:1" version="1.1">
     <xsd:annotation>
         <xsd:documentation><![CDATA[---------------------------
 © Copyright GS1, 2013
@@ -72,11 +60,15 @@ The schema and subsequent updates will be provided on the GS1 websites.
                 <xsd:element name="productData" type="product_data:TSD_ProductDataType"/>
                 <xsd:element name="noDataException" type="query_by_gtin_response:TSD_NoDataExceptionType"/>
                 <xsd:element name="invalidGTINException" type="query_by_gtin_response:TSD_InvalidGTINExceptionType"/>
-                <xsd:element name="invalidTargetMarketException" type="query_by_gtin_response:TSD_InvalidTargetMarketExceptionType"/>
-                <xsd:element name="unsupportedVersionException" type="query_by_gtin_response:TSD_UnsupportedVersionExceptionType"/>
-                <xsd:element name="invalidRequestException" type="query_by_gtin_response:TSD_InvalidRequestExceptionType"/>
+                <xsd:element name="invalidTargetMarketException"
+                             type="query_by_gtin_response:TSD_InvalidTargetMarketExceptionType"/>
+                <xsd:element name="unsupportedVersionException"
+                             type="query_by_gtin_response:TSD_UnsupportedVersionExceptionType"/>
+                <xsd:element name="invalidRequestException"
+                             type="query_by_gtin_response:TSD_InvalidRequestExceptionType"/>
                 <xsd:element name="securityException" type="query_by_gtin_response:TSD_SecurityExceptionType"/>
-                <xsd:element name="implementationException" type="query_by_gtin_response:TSD_ImplementationExceptionType"/>
+                <xsd:element name="implementationException"
+                             type="query_by_gtin_response:TSD_ImplementationExceptionType"/>
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
@@ -84,7 +76,8 @@ The schema and subsequent updates will be provided on the GS1 websites.
         <xsd:complexContent>
             <xsd:extension base="tsd_common:TSD_ExceptionType">
                 <xsd:sequence>
-                    <xsd:element minOccurs="0" name="exceptionContactDescription" type="shared_common:Description200Type"/>
+                    <xsd:element minOccurs="0" name="exceptionContactDescription"
+                                 type="shared_common:Description200Type"/>
                 </xsd:sequence>
             </xsd:extension>
         </xsd:complexContent>
