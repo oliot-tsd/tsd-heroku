@@ -16,9 +16,11 @@
 
 package org.oliot.heroku.tsd.controllers;
 
+import org.oliot.heroku.tsd.models.ProductDataRepository;
 import org.oliot.heroku.tsd.models.schema.ObjectFactory;
-import org.oliot.heroku.tsd.models.schema.TSDBasicProductInformationModuleType;
+import org.oliot.heroku.tsd.models.schema.TSDProductDataType;
 import org.oliot.heroku.tsd.services.ProductDataValidationEventHandler;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,6 +39,13 @@ import java.io.StringReader;
 @Controller
 public class HomeController {
 
+    private ProductDataRepository repository;
+
+    @Autowired
+    public HomeController(ProductDataRepository repository) {
+        this.repository = repository;
+    }
+
     @GetMapping("/")
     public String index() {
         return "index";
@@ -46,25 +55,20 @@ public class HomeController {
     public String insert(@RequestParam("editor") String xmldata) {
         try {
             SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-            File schemaFile = new File("src/main/java/org/oliot/heroku/tsd/models/schema/tsd/BasicProductInformationModule.xsd");
+            File schemaFile = new File("src/main/java/org/oliot/heroku/tsd/models/schema/tsd/ProductData.xsd");
             Schema schema = schemaFactory.newSchema(schemaFile);
 
             JAXBContext jaxbContext = JAXBContext.newInstance(ObjectFactory.class);
             Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-
-            unmarshaller.setEventHandler(new ProductDataValidationEventHandler());
             unmarshaller.setSchema(schema);
+            unmarshaller.setEventHandler(new ProductDataValidationEventHandler());
 
             StringReader reader = new StringReader(xmldata);
 
-            JAXBElement<TSDBasicProductInformationModuleType> jaxbElement
-                    = (JAXBElement<TSDBasicProductInformationModuleType>) unmarshaller.unmarshal(reader);
-            TSDBasicProductInformationModuleType tsdBasicProductInformationModuleType
-                    = (TSDBasicProductInformationModuleType) jaxbElement.getValue();
-            // repository.save(tsdProductDataType);
-
-            tsdBasicProductInformationModuleType.getProductName().forEach(p -> System.out.println(p.getValue()));
-            tsdBasicProductInformationModuleType.getImageLink().forEach(p -> System.out.println(p.getUrl()));
+            JAXBElement<TSDProductDataType> jaxbElement
+                    = (JAXBElement<TSDProductDataType>) unmarshaller.unmarshal(reader);
+            TSDProductDataType tsdProductDataType = jaxbElement.getValue();
+            repository.save(tsdProductDataType);
         } catch (Exception e) {
             e.printStackTrace();
         }
