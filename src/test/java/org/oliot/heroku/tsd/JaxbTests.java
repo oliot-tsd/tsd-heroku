@@ -32,6 +32,8 @@ import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import java.io.File;
 
+import static org.springframework.test.util.AssertionErrors.assertEquals;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class JaxbTests {
@@ -68,6 +70,27 @@ public class JaxbTests {
                     System.out.println(productAllergenInformationModuleType.getAllergenRelatedInformation().get(0).getAllergenSpecificationAgency());
             }
         }
+    }
+
+    @Test
+    public void testBasicProductInformationModule() throws SAXException, JAXBException {
+        SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+        File schemaFile = new File("src/main/java/org/oliot/heroku/tsd/models/schema/tsd/BasicProductInformationModule.xsd");
+        Schema schema = schemaFactory.newSchema(schemaFile);
+
+        JAXBContext jaxbContext = JAXBContext.newInstance(ObjectFactory.class);
+        Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+        unmarshaller.setSchema(schema);
+
+        File xml = new File("src/test/resources/xmls/modules/BasicProductInformationModule/BasicProductInformationModule_1.xml");
+
+        JAXBElement<TSDBasicProductInformationModuleType> jaxbElement
+                = (JAXBElement<TSDBasicProductInformationModuleType>) unmarshaller.unmarshal(xml);
+        TSDBasicProductInformationModuleType tsdBasicProductInformationModuleType
+                = jaxbElement.getValue();
+        assertEquals("", "Consumer Market Description", tsdBasicProductInformationModuleType.getConsumerMarketingDescription().get(0).getValue());
+        assertEquals("", "Product Name", tsdBasicProductInformationModuleType.getProductName().get(0).getValue());
+        assertEquals("", "12345678", tsdBasicProductInformationModuleType.getGpcCategoryCode());
     }
 
 }

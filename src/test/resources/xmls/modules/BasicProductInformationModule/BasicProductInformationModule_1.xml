@@ -18,49 +18,47 @@
 <basic_product_information_module:basicProductInformationModule
         xmlns:basic_product_information_module="urn:gs1:tsd:basic_product_information_module:xsd:1"
 >
-    <productName codeListVersion="" languageCode="">productName</productName>
-    <consumerMarketingDescription codeListVersion="" languageCode="">consumerMarketingDescription
-    </consumerMarketingDescription>
-    <gpcCategoryCode>gpcCategoryCode</gpcCategoryCode>
-    <regulatedProductName codeListVersion="" languageCode="">regulatedProductName</regulatedProductName>
+    <productName codeListVersion="1.1" languageCode="en">Product Name</productName>
+    <consumerMarketingDescription codeListVersion="1.1" languageCode="en">Consumer Market Description</consumerMarketingDescription>
+    <gpcCategoryCode>12345678</gpcCategoryCode>
+    <regulatedProductName codeListVersion="1.1" languageCode="en">Regulated Product Name</regulatedProductName>
     <brandNameInformation>
-        <brandName>brandName</brandName>
-        <languageSpecificBrandName codeListVersion="" languageCode="">languageSpecificBrandName
-        </languageSpecificBrandName>
+        <brandName>Brand Name</brandName>
+        <languageSpecificBrandName codeListVersion="1.1" languageCode="en">Language Specific Brand Name</languageSpecificBrandName>
     </brandNameInformation>
     <productInformationLink>
         <url>http://tempuri.org</url>
-        <productInformationTypeCode codeListVersion="">productInformationTypeCode</productInformationTypeCode>
-        <languageCode codeListVersion="">languageCode</languageCode>
+        <productInformationTypeCode codeListVersion="1.1">Product Information Type Code</productInformationTypeCode>
+        <languageCode codeListVersion="1.1">en</languageCode>
         <avpList>
-            <stringAVP name="">stringAVP</stringAVP>
+            <stringAVP name="attr1">attr1_VAL</stringAVP>
         </avpList>
     </productInformationLink>
     <imageLink>
         <url>http://tempuri.org</url>
-        <imageTypeCode codeListVersion="">imageTypeCode</imageTypeCode>
-        <languageCode codeListVersion="">languageCode</languageCode>
-        <imagePixelHeight>0</imagePixelHeight>
-        <imagePixelWidth>0</imagePixelWidth>
-        <fileSize codeListVersion="" measurementUnitCode="">0.0</fileSize>
+        <imageTypeCode codeListVersion="1.1">Image Type Code</imageTypeCode>
+        <languageCode codeListVersion="1.1">en</languageCode>
+        <imagePixelHeight>300</imagePixelHeight>
+        <imagePixelWidth>300</imagePixelWidth>
+        <fileSize codeListVersion="1.1" measurementUnitCode="kB">1500</fileSize>
         <avpList>
-            <stringAVP name="">stringAVP</stringAVP>
+            <stringAVP name="attr1">attr1_VAL</stringAVP>
         </avpList>
     </imageLink>
     <packagingSignatureLine>
-        <partyContactRoleCode codeListVersion="">partyContactRoleCode</partyContactRoleCode>
+        <partyContactRoleCode codeListVersion="1.1">partyContactRoleCode</partyContactRoleCode>
         <partyContactName>partyContactName</partyContactName>
         <partyContactAddress>partyContactAddress</partyContactAddress>
-        <gln>gln</gln>
+        <gln>1234567890123</gln>
         <communicationChannel>
-            <communicationChannelCode codeListVersion="">communicationChannelCode</communicationChannelCode>
+            <communicationChannelCode codeListVersion="1.1">communicationChannelCode</communicationChannelCode>
             <communicationValue>communicationValue</communicationValue>
         </communicationChannel>
         <avpList>
-            <stringAVP name="">stringAVP</stringAVP>
+            <stringAVP name="attr1">attr1_VAL</stringAVP>
         </avpList>
     </packagingSignatureLine>
     <avpList>
-        <stringAVP name="">stringAVP</stringAVP>
+        <stringAVP name="attr1">attr1_VAL</stringAVP>
     </avpList>
 </basic_product_information_module:basicProductInformationModule>
