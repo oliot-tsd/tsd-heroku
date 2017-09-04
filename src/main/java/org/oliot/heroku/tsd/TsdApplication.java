@@ -16,13 +16,30 @@
 
 package org.oliot.heroku.tsd;
 
+import org.oliot.heroku.tsd.models.converters.JAXBElementReadConverter;
+import org.oliot.heroku.tsd.models.converters.JAXBElementWriteConverter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.data.mongodb.core.convert.CustomConversions;
+import org.springframework.data.mongodb.core.convert.MongoConverter;
+
+import java.util.Arrays;
 
 @SpringBootApplication
 public class TsdApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(TsdApplication.class, args);
+    }
+
+    @Bean
+    /* https://stackoverflow.com/q/46023866/353736 */
+    public CustomConversions customConversions(@Lazy MongoConverter converter) {
+        return new CustomConversions(Arrays.asList(
+                new JAXBElementReadConverter(converter),
+                new JAXBElementWriteConverter(converter)
+        ));
     }
 }
