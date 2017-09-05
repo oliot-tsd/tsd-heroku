@@ -51,7 +51,7 @@ public class HomeController {
         return "index";
     }
 
-    @PostMapping("/")
+    @PostMapping("/insert")
     public String insert(@RequestParam("editor") String xmldata) {
         try {
             SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);

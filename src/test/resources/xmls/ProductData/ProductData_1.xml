@@ -22,7 +22,6 @@
     <targetMarket codeListVersion="1.1">410</targetMarket>
     <informationProviderGLN>1234567891234</informationProviderGLN>
     <informationProviderName>Information Provider Name</informationProviderName>
-    <timeToLive>P2Y6M5DT12H35M30S</timeToLive>
     <productDataRecord>
         <productionVariantDescription codeListVersion="1.1" languageCode="en">
             Product Variant Description
