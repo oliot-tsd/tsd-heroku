@@ -17,10 +17,10 @@
 
 package org.oliot.heroku.tsd.models.schema;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import javax.xml.bind.annotation.*;
 import javax.xml.datatype.Duration;
 import java.util.ArrayList;
 import java.util.List;
@@ -61,7 +61,11 @@ import java.util.List;
     "productDataRecord",
     "avpList"
 })
+@Document(collection = "ProductData")
 public class TSDProductDataType {
+    @Id
+    @XmlTransient
+    private final String id = null;
 
     @XmlElement(required = true)
     protected String gtin;
