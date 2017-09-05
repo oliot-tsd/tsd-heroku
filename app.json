@@ -17,5 +17,13 @@
     {
       "url": "heroku/java"
     }
-  ]
+  ],
+  "env": {
+    "ADMIN_USERNAME": {
+      "description": "Administrator Username"
+    },
+    "ADMIN_PASSWORD": {
+      "description": "Administrator Password"
+    }
+  }
 }
