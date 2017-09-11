@@ -20,30 +20,10 @@
       lang="en"
       layout:decorator="default">
 <head>
-    <link rel="stylesheet" type="text/css"
-          th:href="@{/css/codemirror.css}"/>
 </head>
 <body>
 <th:block layout:fragment="content">
-    <div class="starter-template">
-        <form action="/insert" method="post">
-            <label for="editor">Product Data</label>
-            <textarea rows="50" cols="100" id="editor" name="editor"></textarea>
-            <input type="submit" value="Submit"/>
-        </form>
-    </div>
-</th:block>
-<th:block layout:fragment="scripts">
-    <script type="text/javascript"
-            th:src="@{/js/codemirror.js}"></script>
-    <script type="text/javascript"
-            th:src="@{/js/xml.js}"></script>
-    <script type="text/javascript">
-        var editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
-            mode: "application/xml",
-            lineNumbers: true
-        });
-    </script>
+    <h1>Under Construction</h1>
 </th:block>
 </body>
 </html>

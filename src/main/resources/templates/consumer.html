@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!--
+  ~ Copyright 2017 Open Language for Internet of Things (Oliot)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      lang="en"
+      layout:decorator="default">
+<head>
+    <title>Product Details</title>
+    <link rel="stylesheet" type="text/css"
+          th:href="@{/css/consumer.css}"/>
+</head>
+<body>
+<th:block layout:fragment="content">
+    <div class="row">
+        <div class="col-lg-3">
+            <h1 class="my-4">Product Data</h1>
+            <div class="list-group">
+                <a href="#" class="list-group-item">Basic Product Information</a>
+                <a href="#" class="list-group-item">Nutritional Product Information</a>
+                <a href="#" class="list-group-item">Food And Beverage Ingredient Information</a>
+            </div>
+        </div>
+        <!-- /.col-lg-3 -->
+
+        <div class="col-lg-9">
+
+            <div class="card mt-4">
+                <img class="card-img-top img-fluid" src="http://placehold.it/900x400" alt=""/>
+                <div class="card-body">
+                    <h3 class="card-title">Product Name</h3>
+                    <h4>$24.99</h4>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente dicta fugit
+                        fugiat hic aliquam itaque facere, soluta. Totam id dolores, sint aperiam sequi pariatur
+                        praesentium animi perspiciatis molestias iure, ducimus!</p>
+                    <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
+                    4.0 stars
+                </div>
+            </div>
+            <!-- /.card -->
+
+            <div class="card card-outline-secondary my-4">
+                <div class="card-header">
+                    Product Reviews
+                </div>
+                <div class="card-body">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore,
+                        similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum.
+                        Sequi mollitia, necessitatibus quae sint natus.</p>
+                    <small class="text-muted">Posted by Anonymous on 3/1/17</small>
+                    <hr/>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore,
+                        similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum.
+                        Sequi mollitia, necessitatibus quae sint natus.</p>
+                    <small class="text-muted">Posted by Anonymous on 3/1/17</small>
+                    <hr/>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore,
+                        similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum.
+                        Sequi mollitia, necessitatibus quae sint natus.</p>
+                    <small class="text-muted">Posted by Anonymous on 3/1/17</small>
+                    <hr/>
+                    <a href="#" class="btn btn-success">Leave a Review</a>
+                </div>
+            </div>
+            <!-- /.card -->
+
+        </div>
+        <!-- /.col-lg-9 -->
+    </div>
+</th:block>
+</body>
+</html>
