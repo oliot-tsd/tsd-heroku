@@ -20,8 +20,10 @@
       lang="en">
 <head>
     <!-- Global Site Tag (gtag.js) - Google Analytics -->
-    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-106158007-1"></script>
-    <script>
+    <script async="async"
+            th:attrappend="src='https://www.googletagmanager.com/gtag/js?id=' +
+                    ${@environment.getProperty('oliot.tsd.config.GOOGLE_MANAGER_ID')}"></script>
+    <script th:inline="javascript">
         window.dataLayer = window.dataLayer || [];
 
         function gtag() {
@@ -29,7 +31,7 @@
         };
         gtag('js', new Date());
 
-        gtag('config', 'UA-106158007-1');
+        gtag('config', /*[[${@environment.getProperty('oliot.tsd.config.GOOGLE_MANAGER_ID')}]]*/);
     </script>
 
     <meta charset="UTF-8"/>

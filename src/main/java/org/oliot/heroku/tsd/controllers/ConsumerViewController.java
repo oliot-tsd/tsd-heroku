@@ -16,11 +16,15 @@
 
 package org.oliot.heroku.tsd.controllers;
 
+import com.cloudinary.Cloudinary;
+import com.cloudinary.Singleton;
 import org.oliot.heroku.tsd.models.ProductDataRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -31,6 +35,8 @@ public class ConsumerViewController {
 
     private static final Logger logger = LoggerFactory
             .getLogger(ConsumerViewController.class);
+    private static final Cloudinary cloudinary = Singleton
+            .getCloudinary();
 
     @Autowired
     public ConsumerViewController(ProductDataRepository repository) {
@@ -38,8 +44,9 @@ public class ConsumerViewController {
     }
 
     @GetMapping("/view/{gtin}")
-    public String consumerView(@PathVariable String gtin) {
+    public String consumerView(@PathVariable String gtin, Model model) {
         logger.info("Requested GTIN: " + gtin);
+        model.addAttribute("cloudinaryName", cloudinary.getStringConfig("cloud_name", ""));
         return "consumer";
     }
 }

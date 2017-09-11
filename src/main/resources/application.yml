@@ -8,3 +8,8 @@ spring:
 
 server:
   port: ${PORT:8080}
+
+oliot:
+  tsd:
+    config:
+      GOOGLE_MANAGER_ID: ${GOOGLE_MANAGER_ID:UA-106158007-1}
