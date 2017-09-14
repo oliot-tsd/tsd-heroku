@@ -23,6 +23,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 
 @RepositoryRestResource(collectionResourceRel = "product", path = "product")
-public interface ProductDataRepository extends MongoRepository<TSDProductDataType, String> {
+public interface ProductDataRepository extends MongoRepository<TSDProductDataType, String>, ProductDataRepositoryCustom {
     TSDProductDataType queryByGtin(@Param("gtin") String gtin);
 }

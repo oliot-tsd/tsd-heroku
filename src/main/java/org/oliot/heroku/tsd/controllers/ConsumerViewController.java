@@ -18,11 +18,12 @@ package org.oliot.heroku.tsd.controllers;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.Singleton;
+import org.apache.commons.lang3.StringUtils;
 import org.oliot.heroku.tsd.models.ProductDataRepository;
+import org.oliot.heroku.tsd.models.schema.TSDProductDataType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,8 +46,15 @@ public class ConsumerViewController {
 
     @GetMapping("/view/{gtin}")
     public String consumerView(@PathVariable String gtin, Model model) {
-        logger.info("Requested GTIN: " + gtin);
+        TSDProductDataType tsdProductDataType;
+
+        String gtin14 = StringUtils.leftPad(gtin, 14, "0");
+        logger.info("Requested GTIN: " + gtin14);
+
+        tsdProductDataType = repository.queryByGtin(gtin14);
+
         model.addAttribute("cloudinaryName", cloudinary.getStringConfig("cloud_name", ""));
-        return "consumer";
+        model.addAttribute("productData", tsdProductDataType);
+        return "consumer/index";
     }
 }
