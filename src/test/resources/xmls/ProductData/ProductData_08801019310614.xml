@@ -22,38 +22,38 @@
                           xmlns:product_quantity_information_module="urn:gs1:tsd:product_quantity_information_module:xsd:1"
                           xmlns:food_and_beverage_information_module="urn:gs1:tsd:food_and_beverage_information_module:xsd:1"
                           xmlns:nutritional_product_information_module="urn:gs1:tsd:nutritional_product_information_module:xsd:1">
-    <gtin>08801056059842</gtin>
+    <gtin>08801019310614</gtin>
     <targetMarket codeListVersion="1.1">410</targetMarket>
     <informationProviderGLN>1234567891234</informationProviderGLN>
     <informationProviderName>Lotte Mart</informationProviderName>
     <productDataRecord>
         <module>
             <basic_product_information_module:basicProductInformationModule>
-                <productName languageCode="kr" codeListVersion="1.1">아이시스 8.0</productName>
+                <productName languageCode="kr" codeListVersion="1.1">해태 버터링</productName>
                 <gpcCategoryCode>12345678</gpcCategoryCode>
                 <brandNameInformation>
-                    <brandName>롯데</brandName>
-                    <languageSpecificBrandName languageCode="en" codeListVersion="1.1">Lotte</languageSpecificBrandName>
+                    <brandName>해태</brandName>
+                    <languageSpecificBrandName languageCode="en" codeListVersion="1.1">Haitai</languageSpecificBrandName>
                 </brandNameInformation>
                 <productInformationLink>
-                    <url>http://www.lottemart.com/product/ProductDetail.do?ProductCD=8801056059842</url>
+                    <url>http://www.lottemart.com/product/ProductDetail.do?ProductCD=8801019310614</url>
                     <productInformationTypeCode>MARKETING_INFORMATION</productInformationTypeCode>
                     <languageCode>kr</languageCode>
                 </productInformationLink>
                 <imageLink>
-                    <url>http://res.cloudinary.com/hcxh60wvk/image/upload/v1505284163/08801056059842/1.jpg</url>
+                    <url>http://res.cloudinary.com/hcxh60wvk/image/upload/v1505284360/08801019310614/1.jpg</url>
                     <imageTypeCode>PRODUCT_IMAGE</imageTypeCode>
                     <languageCode>kr</languageCode>
                 </imageLink>
                 <packagingSignatureLine>
                     <partyContactRoleCode>MANUFACTURER_OF_GOODS</partyContactRoleCode>
-                    <partyContactName>씨에이치 음료 Co. Ltd.</partyContactName>
-                    <partyContactAddress>59, Seongdae 2-gil, Miwon-myeon, Sangdang-gu, Cheongju-si, Chungcheongbuk-do, Republic of Korea</partyContactAddress>
+                    <partyContactName>훼미리식품(주)</partyContactName>
+                    <partyContactAddress>216, Palgwajeong-ro, Deokjin-gu, Jeonju-si, Jeollabuk-do, Republic of Korea</partyContactAddress>
                 </packagingSignatureLine>
                 <packagingSignatureLine>
                     <partyContactRoleCode>DISTRIBUTOR</partyContactRoleCode>
-                    <partyContactName>롯데칠성음료(주)</partyContactName>
-                    <partyContactAddress>15, Seocho-daero 70-gil, Seocho-gu, Seoul, Republic of Korea</partyContactAddress>
+                    <partyContactName>해태제과식품(주)</partyContactName>
+                    <partyContactAddress>3, Hangang-daero 72-gil, Yongsan-gu, Seoul, Republic of Korea</partyContactAddress>
                 </packagingSignatureLine>
             </basic_product_information_module:basicProductInformationModule>
         </module>
