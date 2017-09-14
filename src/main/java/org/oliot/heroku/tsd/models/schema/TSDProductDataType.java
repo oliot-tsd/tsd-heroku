@@ -18,6 +18,8 @@
 package org.oliot.heroku.tsd.models.schema;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.CompoundIndex;
+import org.springframework.data.mongodb.core.index.CompoundIndexes;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.xml.bind.annotation.*;
@@ -62,6 +64,11 @@ import java.util.List;
     "avpList"
 })
 @Document(collection = "ProductData")
+@CompoundIndexes({
+        @CompoundIndex(name = "product_idx",
+                unique = true,
+                def = "{'gtin':1, 'targetMarket.value':1}")
+})
 public class TSDProductDataType {
     @Id
     @XmlTransient

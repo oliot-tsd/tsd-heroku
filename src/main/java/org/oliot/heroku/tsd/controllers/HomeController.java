@@ -16,12 +16,17 @@
 
 package org.oliot.heroku.tsd.controllers;
 
+import org.oliot.heroku.tsd.exceptions.ResourceConflictException;
+import org.oliot.heroku.tsd.exceptions.ResourceGeneralException;
 import org.oliot.heroku.tsd.models.ProductDataRepository;
 import org.oliot.heroku.tsd.models.schema.ObjectFactory;
 import org.oliot.heroku.tsd.models.schema.TSDProductDataType;
 import org.oliot.heroku.tsd.services.ProductDataValidationEventHandler;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -44,6 +49,18 @@ public class HomeController {
     @Autowired
     public HomeController(ProductDataRepository repository) {
         this.repository = repository;
+    }
+
+    @ExceptionHandler(ResourceConflictException.class)
+    public String handleResourceConflictException(Model model) {
+        model.addAttribute("errorMessage", "Product already exists in database!");
+        return "404";
+    }
+
+    @ExceptionHandler(ResourceGeneralException.class)
+    public String handleResourceGeneralException(Model model) {
+        model.addAttribute("errorMessage", "Unknown Error! Please try again...");
+        return "404";
     }
 
     @GetMapping("/")
@@ -69,8 +86,12 @@ public class HomeController {
                     = (JAXBElement<TSDProductDataType>) unmarshaller.unmarshal(reader);
             TSDProductDataType tsdProductDataType = jaxbElement.getValue();
             repository.save(tsdProductDataType);
+        } catch (DuplicateKeyException e) {
+            e.printStackTrace();
+            throw new ResourceConflictException();
         } catch (Exception e) {
             e.printStackTrace();
+            throw new ResourceGeneralException();
         }
 
         return "redirect:/";

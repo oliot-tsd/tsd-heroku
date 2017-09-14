@@ -17,11 +17,7 @@
 
 <product_data:productData xmlns:product_data="urn:gs1:tsd:product_data:xsd:1"
                           xmlns:basic_product_information_module="urn:gs1:tsd:basic_product_information_module:xsd:1"
-                          xmlns:product_allergen_information_module="urn:gs1:tsd:product_allergen_information_module:xsd:1"
-                          xmlns:product_instructions_module="urn:gs1:tsd:product_instructions_module:xsd:1"
-                          xmlns:product_quantity_information_module="urn:gs1:tsd:product_quantity_information_module:xsd:1"
-                          xmlns:food_and_beverage_information_module="urn:gs1:tsd:food_and_beverage_information_module:xsd:1"
-                          xmlns:nutritional_product_information_module="urn:gs1:tsd:nutritional_product_information_module:xsd:1">
+>
     <gtin>08808244201014</gtin>
     <targetMarket codeListVersion="1.1">410</targetMarket>
     <informationProviderGLN>1234567891234</informationProviderGLN>

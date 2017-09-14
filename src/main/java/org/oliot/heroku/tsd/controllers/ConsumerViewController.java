@@ -47,8 +47,9 @@ public class ConsumerViewController {
     }
 
     @ExceptionHandler(ResourceNotFoundException.class)
-    public String handleResourceNotFoundException() {
-        return "consumer/404";
+    public String handleResourceNotFoundException(Model model) {
+        model.addAttribute("errorMessage", "Product not found in database!");
+        return "404";
     }
 
     @GetMapping("/view/{gtin}")
