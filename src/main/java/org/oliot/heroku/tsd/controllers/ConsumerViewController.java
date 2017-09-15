@@ -35,7 +35,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 @Controller
 public class ConsumerViewController {
     private ProductDataRepository repository;
-
     private static final Logger logger = LoggerFactory
             .getLogger(ConsumerViewController.class);
     private static final Cloudinary cloudinary = Singleton

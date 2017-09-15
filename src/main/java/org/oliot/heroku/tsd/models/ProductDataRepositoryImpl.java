@@ -18,16 +18,21 @@ package org.oliot.heroku.tsd.models;
 
 import org.apache.commons.lang3.StringUtils;
 import org.oliot.heroku.tsd.models.schema.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.aggregation.Aggregation;
+import org.springframework.data.mongodb.core.aggregation.AggregationResults;
 import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
 
 import javax.xml.bind.JAXBElement;
 
 class ProductDataRepositoryImpl implements ProductDataRepositoryCustom {
 
     private final MongoTemplate mongoTemplate;
+    private static final Logger logger = LoggerFactory
+            .getLogger(ProductDataRepositoryImpl.class);
 
     @Autowired
     public ProductDataRepositoryImpl(MongoTemplate mongoTemplate) {
@@ -89,22 +94,25 @@ class ProductDataRepositoryImpl implements ProductDataRepositoryCustom {
     }
 
     private Object getTSDModule(String gtin, Class moduleClass) {
-        Query query = new Query();
         String gtin14 = StringUtils.leftPad(gtin, 14, "0");
+        Aggregation aggregation = Aggregation.newAggregation(
+                Aggregation.match(Criteria.where("gtin").is(gtin14)),
+                Aggregation.unwind("$productDataRecord"),
+                Aggregation.unwind("$productDataRecord.module"),
+                Aggregation.unwind("$productDataRecord.module.any"),
+                Aggregation.match(Criteria.where("productDataRecord.module.any.declaredType").is(moduleClass.getName())),
+                Aggregation.replaceRoot("productDataRecord.module.any")
+        );
 
-        query.addCriteria(Criteria.where("gtin").is(gtin14));
+        logger.info(aggregation.toString());
 
-        TSDProductDataType tsdProductDataType = mongoTemplate.findOne(query, TSDProductDataType.class);
-        for (TSDProductDataRecordType productDataRecordType: tsdProductDataType.getProductDataRecord()) {
-            for (ExtensionType extensionType: productDataRecordType.getModule()) {
-                for (Object object: extensionType.getAny()) {
-                    JAXBElement jaxbElement = (JAXBElement)object;
-                    if (jaxbElement.getDeclaredType() == moduleClass) {
-                        return jaxbElement.getValue();
-                    }
-                }
-            }
+        AggregationResults<JAXBElement> aggregationResults =
+                mongoTemplate.aggregate(aggregation, TSDProductDataType.class, JAXBElement.class);
+        try {
+            return aggregationResults.getMappedResults().get(0).getValue();
+        } catch (IndexOutOfBoundsException e) {
+            logger.info("NO DATA");
+            return null;
         }
-        return null;
     }
 }

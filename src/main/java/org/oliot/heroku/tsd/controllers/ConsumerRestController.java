@@ -18,8 +18,6 @@ package org.oliot.heroku.tsd.controllers;
 
 import org.oliot.heroku.tsd.models.ProductDataRepository;
 import org.oliot.heroku.tsd.models.schema.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,9 +27,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class ConsumerRestController {
     private ProductDataRepository repository;
 
-    private static final Logger logger = LoggerFactory
-            .getLogger(ConsumerRestController.class);
-
     @Autowired
     public ConsumerRestController(ProductDataRepository repository) {
         this.repository = repository;
@@ -39,55 +34,46 @@ public class ConsumerRestController {
 
     @GetMapping("/view/{gtin}/BasicProductInformation")
     public TSDBasicProductInformationModuleType getBasicProductInformation(@PathVariable String gtin) {
-        logger.info("Requested GTIN: " + gtin);
         return repository.getBasicProductInformation(gtin);
     }
 
     @GetMapping("/view/{gtin}/ProductAllergenInformation")
     public TSDProductAllergenInformationModuleType getProductAllergenInformation(@PathVariable String gtin) {
-        logger.info("Requested GTIN: " + gtin);
         return repository.getProductAllergenInformation(gtin);
     }
 
     @GetMapping("/view/{gtin}/ProductClaimsAndEndorsements")
     public TSDProductClaimsAndEndorsementsModuleType getProductClaimsAndEndorsements(@PathVariable String gtin) {
-        logger.info("Requested GTIN: " + gtin);
         return repository.getProductClaimsAndEndorsements(gtin);
     }
 
     @GetMapping("/view/{gtin}/ProductInstructions")
     public TSDProductInstructionsModuleType getProductInstructions(@PathVariable String gtin) {
-        logger.info("Requested GTIN: " + gtin);
         return repository.getProductInstructions(gtin);
     }
 
     @GetMapping("/view/{gtin}/ProductQuantityInformation")
     public TSDProductQuantityInformationModuleType getProductQuantityInformation(@PathVariable String gtin) {
-        logger.info("Requested GTIN: " + gtin);
         return repository.getProductQuantityInformation(gtin);
     }
 
     @GetMapping("/view/{gtin}/ProductOriginInformation")
     public TSDProductOriginInformationModuleType getProductOriginInformation(@PathVariable String gtin) {
-        logger.info("Requested GTIN: " + gtin);
         return repository.getProductOriginInformation(gtin);
     }
 
     @GetMapping("/view/{gtin}/FoodAndBeverageIngredientInformation")
     public TSDFoodAndBeverageIngredientInformationModuleType getFoodAndBeverageIngredientInformation(@PathVariable String gtin) {
-        logger.info("Requested GTIN: " + gtin);
         return repository.getFoodAndBeverageIngredientInformation(gtin);
     }
 
     @GetMapping("/view/{gtin}/FoodAndBeveragePreparationInformation")
     public TSDFoodAndBeveragePreparationInformationModuleType getFoodAndBeveragePreparationInformation(@PathVariable String gtin) {
-        logger.info("Requested GTIN: " + gtin);
         return repository.getFoodAndBeveragePreparationInformation(gtin);
     }
 
     @GetMapping("/view/{gtin}/NutritionalProductInformation")
     public TSDNutritionalProductInformationModuleType getNutritionalProductInformation(@PathVariable String gtin) {
-        logger.info("Requested GTIN: " + gtin);
         return repository.getNutritionalProductInformation(gtin);
     }
 }
