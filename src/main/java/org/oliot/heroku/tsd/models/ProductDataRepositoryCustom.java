@@ -16,16 +16,10 @@
 
 package org.oliot.heroku.tsd.models;
 
-import org.oliot.heroku.tsd.models.schema.*;
+
+import org.oliot.heroku.tsd.models.schema.TSDProductDataType;
 
 interface ProductDataRepositoryCustom {
-    TSDBasicProductInformationModuleType getBasicProductInformation(String gtin);
-    TSDProductAllergenInformationModuleType getProductAllergenInformation(String gtin);
-    TSDProductClaimsAndEndorsementsModuleType getProductClaimsAndEndorsements(String gtin);
-    TSDProductInstructionsModuleType getProductInstructions(String gtin);
-    TSDProductQuantityInformationModuleType getProductQuantityInformation(String gtin);
-    TSDProductOriginInformationModuleType getProductOriginInformation(String gtin);
-    TSDFoodAndBeverageIngredientInformationModuleType getFoodAndBeverageIngredientInformation(String gtin);
-    TSDFoodAndBeveragePreparationInformationModuleType getFoodAndBeveragePreparationInformation(String gtin);
-    TSDNutritionalProductInformationModuleType getNutritionalProductInformation(String gtin);
+    Object getModuleInformation(Class moduleClass, String gtin);
+    TSDProductDataType getProductHeader(String gtin);
 }

@@ -58,7 +58,7 @@ public class ConsumerViewController {
         String gtin14 = StringUtils.leftPad(gtin, 14, "0");
         logger.info("Requested GTIN: " + gtin14);
 
-        tsdProductDataType = repository.queryByGtin(gtin14);
+        tsdProductDataType = repository.getProductHeader(gtin14);
         if (tsdProductDataType != null) {
             model.addAttribute("cloudinaryName", cloudinary.getStringConfig("cloud_name", ""));
             model.addAttribute("productData", tsdProductDataType);

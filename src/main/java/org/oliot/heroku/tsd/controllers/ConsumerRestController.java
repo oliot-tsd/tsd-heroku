@@ -34,46 +34,55 @@ public class ConsumerRestController {
 
     @GetMapping("/view/{gtin}/BasicProductInformation")
     public TSDBasicProductInformationModuleType getBasicProductInformation(@PathVariable String gtin) {
-        return repository.getBasicProductInformation(gtin);
+        return (TSDBasicProductInformationModuleType) repository.getModuleInformation
+                (TSDBasicProductInformationModuleType.class, gtin);
     }
 
     @GetMapping("/view/{gtin}/ProductAllergenInformation")
     public TSDProductAllergenInformationModuleType getProductAllergenInformation(@PathVariable String gtin) {
-        return repository.getProductAllergenInformation(gtin);
+        return (TSDProductAllergenInformationModuleType) repository.getModuleInformation
+                (TSDProductAllergenInformationModuleType.class, gtin);
     }
 
     @GetMapping("/view/{gtin}/ProductClaimsAndEndorsements")
     public TSDProductClaimsAndEndorsementsModuleType getProductClaimsAndEndorsements(@PathVariable String gtin) {
-        return repository.getProductClaimsAndEndorsements(gtin);
+        return (TSDProductClaimsAndEndorsementsModuleType) repository.getModuleInformation
+                (TSDProductClaimsAndEndorsementsModuleType.class, gtin);
     }
 
     @GetMapping("/view/{gtin}/ProductInstructions")
     public TSDProductInstructionsModuleType getProductInstructions(@PathVariable String gtin) {
-        return repository.getProductInstructions(gtin);
+        return (TSDProductInstructionsModuleType) repository.getModuleInformation
+                (TSDProductInstructionsModuleType.class, gtin);
     }
 
     @GetMapping("/view/{gtin}/ProductQuantityInformation")
     public TSDProductQuantityInformationModuleType getProductQuantityInformation(@PathVariable String gtin) {
-        return repository.getProductQuantityInformation(gtin);
+        return (TSDProductQuantityInformationModuleType) repository.getModuleInformation
+                (TSDProductQuantityInformationModuleType.class, gtin);
     }
 
     @GetMapping("/view/{gtin}/ProductOriginInformation")
     public TSDProductOriginInformationModuleType getProductOriginInformation(@PathVariable String gtin) {
-        return repository.getProductOriginInformation(gtin);
+        return (TSDProductOriginInformationModuleType) repository.getModuleInformation
+                (TSDProductOriginInformationModuleType.class, gtin);
     }
 
     @GetMapping("/view/{gtin}/FoodAndBeverageIngredientInformation")
     public TSDFoodAndBeverageIngredientInformationModuleType getFoodAndBeverageIngredientInformation(@PathVariable String gtin) {
-        return repository.getFoodAndBeverageIngredientInformation(gtin);
+        return (TSDFoodAndBeverageIngredientInformationModuleType) repository.getModuleInformation
+                (TSDFoodAndBeverageIngredientInformationModuleType.class, gtin);
     }
 
     @GetMapping("/view/{gtin}/FoodAndBeveragePreparationInformation")
     public TSDFoodAndBeveragePreparationInformationModuleType getFoodAndBeveragePreparationInformation(@PathVariable String gtin) {
-        return repository.getFoodAndBeveragePreparationInformation(gtin);
+        return (TSDFoodAndBeveragePreparationInformationModuleType) repository.getModuleInformation
+                (TSDFoodAndBeveragePreparationInformationModuleType.class, gtin);
     }
 
     @GetMapping("/view/{gtin}/NutritionalProductInformation")
     public TSDNutritionalProductInformationModuleType getNutritionalProductInformation(@PathVariable String gtin) {
-        return repository.getNutritionalProductInformation(gtin);
+        return (TSDNutritionalProductInformationModuleType) repository.getModuleInformation
+                (TSDNutritionalProductInformationModuleType.class, gtin);
     }
 }
