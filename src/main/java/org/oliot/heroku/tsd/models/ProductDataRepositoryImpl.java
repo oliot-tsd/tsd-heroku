@@ -68,6 +68,7 @@ class ProductDataRepositoryImpl implements ProductDataRepositoryCustom {
     public TSDProductDataType getProductHeader(String gtin) {
         String gtin14 = StringUtils.leftPad(gtin, 14, "0");
         Query query = new Query();
+        query.addCriteria(Criteria.where("gtin").is(gtin14));
         query.fields().exclude("productDataRecord");
 
         return mongoTemplate.findOne(query, TSDProductDataType.class);
