@@ -29,9 +29,19 @@
 <th:block layout:fragment="content">
     <div class="starter-template">
         <form action="/insert" method="post">
-            <label for="editor">Product Data</label>
+            <label for="editor">Enter Product Data</label>
             <textarea rows="50" cols="100" id="editor" name="editor"></textarea>
-            <input type="submit" value="Submit"/>
+            <br/>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <hr/>
+        <button class="btn btn-default" id="08801019310614">해태 버터링</button>
+        <button class="btn btn-default" id="08801037088168">오레오 화이트크림</button>
+        <button class="btn btn-default" id="08801056059842">아이시스 8.0</button>
+        <button class="btn btn-default" id="08808244201014">삼다수</button>
+        <hr/>
+        <form action="/reset" method="post">
+            <button type="submit" class="btn btn-danger">Reset Database</button>
         </form>
     </div>
 </th:block>
@@ -42,6 +52,62 @@
         var editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
             mode: "application/xml",
             lineNumbers: true
+        });
+
+        $('#08801019310614').click(function (event){
+            event.preventDefault();
+            $.ajax({
+                url: 'https://raw.githubusercontent.com/oliot-tsd/tsd-heroku/master/src/test/resources/xmls/ProductData/ProductData_08801019310614.xml'
+                ,success: function(response) {
+                    editor.getDoc().setValue(response);
+                }
+                ,error: function() {
+                    editor.getDoc().setValue("Unable to Load XML");
+                }
+            });
+            return false;
+        });
+
+        $('#08801037088168').click(function (event){
+            event.preventDefault();
+            $.ajax({
+                url: 'https://raw.githubusercontent.com/oliot-tsd/tsd-heroku/master/src/test/resources/xmls/ProductData/ProductData_08801037088168.xml'
+                ,success: function(response) {
+                    editor.getDoc().setValue(response);
+                }
+                ,error: function() {
+                    editor.getDoc().setValue("Unable to Load XML");
+                }
+            });
+            return false;
+        });
+
+        $('#08801056059842').click(function (event){
+            event.preventDefault();
+            $.ajax({
+                url: 'https://raw.githubusercontent.com/oliot-tsd/tsd-heroku/master/src/test/resources/xmls/ProductData/ProductData_08801056059842.xml'
+                ,success: function(response) {
+                    editor.getDoc().setValue(response);
+                }
+                ,error: function() {
+                    editor.getDoc().setValue("Unable to Load XML");
+                }
+            });
+            return false;
+        });
+
+        $('#08808244201014').click(function (event){
+            event.preventDefault();
+            $.ajax({
+                url: 'https://raw.githubusercontent.com/oliot-tsd/tsd-heroku/master/src/test/resources/xmls/ProductData/ProductData_08808244201014.xml'
+                ,success: function(response) {
+                    editor.getDoc().setValue(response);
+                }
+                ,error: function() {
+                    editor.getDoc().setValue("Unable to Load XML");
+                }
+            });
+            return false;
         });
     </script>
 </th:block>

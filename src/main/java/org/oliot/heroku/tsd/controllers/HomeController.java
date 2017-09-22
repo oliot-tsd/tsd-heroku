@@ -96,4 +96,10 @@ public class HomeController {
 
         return "redirect:/";
     }
+
+    @PostMapping("/reset")
+    public String reset() {
+        repository.deleteAll();
+        return "redirect:/";
+    }
 }
