@@ -40,6 +40,8 @@
         <button class="btn btn-default" id="08801037088168">오레오 화이트크림</button>
         <button class="btn btn-default" id="08801056059842">아이시스 8.0</button>
         <button class="btn btn-default" id="08808244201014">삼다수</button>
+        <button class="btn btn-default" id="02399610000004">감자</button>
+        <button class="btn btn-default" id="00430000007905">양배추</button>
         <hr/>
         <p class="lead">Danger Zone</p>
         <form action="/reset" method="post">
@@ -102,6 +104,34 @@
             event.preventDefault();
             $.ajax({
                 url: 'https://raw.githubusercontent.com/oliot-tsd/tsd-heroku/master/src/test/resources/xmls/ProductData/ProductData_08808244201014.xml'
+                ,success: function(response) {
+                    editor.getDoc().setValue(response);
+                }
+                ,error: function() {
+                    editor.getDoc().setValue("Unable to Load XML");
+                }
+            });
+            return false;
+        });
+
+        $('#02399610000004').click(function (event){
+            event.preventDefault();
+            $.ajax({
+                url: 'https://raw.githubusercontent.com/oliot-tsd/tsd-heroku/master/src/test/resources/xmls/ProductData/ProductData_02399610000004.xml'
+                ,success: function(response) {
+                    editor.getDoc().setValue(response);
+                }
+                ,error: function() {
+                    editor.getDoc().setValue("Unable to Load XML");
+                }
+            });
+            return false;
+        });
+
+        $('#00430000007905').click(function (event){
+            event.preventDefault();
+            $.ajax({
+                url: 'https://raw.githubusercontent.com/oliot-tsd/tsd-heroku/master/src/test/resources/xmls/ProductData/ProductData_00430000007905.xml'
                 ,success: function(response) {
                     editor.getDoc().setValue(response);
                 }
