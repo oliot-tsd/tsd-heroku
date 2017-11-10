@@ -29,7 +29,7 @@
     <div class="row">
         <div class="col-lg-3">
             <a th:attrappend="href='/view/' + ${productData.gtin}">
-                <h1 class="my-4" th:text="${productData.gtin}">Product GTIN</h1>
+                <h1 class="my-4" th:text="${productName}">Product Name</h1>
             </a>
             <div class="list-group" id="modules">
                 <a th:attrappend="href='/view/' + ${productData.gtin} + '/BasicProductInformation'" class="list-group-item">Basic Product Information</a>

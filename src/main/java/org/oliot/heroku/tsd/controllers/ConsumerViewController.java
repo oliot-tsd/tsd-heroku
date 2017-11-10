@@ -21,6 +21,7 @@ import com.cloudinary.Singleton;
 import org.apache.commons.lang3.StringUtils;
 import org.oliot.heroku.tsd.exceptions.ResourceNotFoundException;
 import org.oliot.heroku.tsd.models.ProductDataRepository;
+import org.oliot.heroku.tsd.models.schema.TSDBasicProductInformationModuleType;
 import org.oliot.heroku.tsd.models.schema.TSDProductDataType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -54,14 +55,22 @@ public class ConsumerViewController {
     @GetMapping("/view/{gtin}")
     public String consumerView(@PathVariable String gtin, Model model) {
         TSDProductDataType tsdProductDataType;
+        TSDBasicProductInformationModuleType basicProductInformationModuleType;
 
         String gtin14 = StringUtils.leftPad(gtin, 14, "0");
         logger.info("Requested GTIN: " + gtin14);
 
         tsdProductDataType = repository.getProductHeader(gtin14);
+        basicProductInformationModuleType = (TSDBasicProductInformationModuleType)repository.
+                getModuleInformation(TSDBasicProductInformationModuleType.class, gtin14);
         if (tsdProductDataType != null) {
+            String productName;
+
+            productName = basicProductInformationModuleType.getProductName().get(0).getValue();
+
             model.addAttribute("cloudinaryName", cloudinary.getStringConfig("cloud_name", ""));
             model.addAttribute("productData", tsdProductDataType);
+            model.addAttribute("productName", productName);
             return "consumer/index";
         } else {
             throw new ResourceNotFoundException();
