@@ -19,7 +19,10 @@ package org.oliot.heroku.tsd.models;
 
 import org.oliot.heroku.tsd.models.schema.TSDProductDataType;
 
+import javax.xml.bind.JAXBElement;
+import java.util.List;
+
 interface ProductDataRepositoryCustom {
-    Object getModuleInformation(Class moduleClass, String gtin);
+    List<JAXBElement> getModuleInformation(Class moduleClass, String gtin);
     TSDProductDataType getProductHeader(String gtin);
 }

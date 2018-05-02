@@ -37,45 +37,41 @@ import java.util.List;
 
 
 @Controller
-public class ProductDataViewController {
+public class PlaceDataViewController {
     private ProductDataRepository repository;
     private static final Logger logger = LoggerFactory
-            .getLogger(ProductDataViewController.class);
-    private static final Cloudinary cloudinary = Singleton
-            .getCloudinary();
+            .getLogger(PlaceDataViewController.class);
 
     @Autowired
-    public ProductDataViewController(ProductDataRepository repository) {
+    public PlaceDataViewController(ProductDataRepository repository) {
         this.repository = repository;
     }
 
     @ExceptionHandler(ResourceNotFoundException.class)
     public String handleResourceNotFoundException(Model model) {
-        model.addAttribute("errorMessage", "Product not found in database!");
+        model.addAttribute("errorMessage", "Place not found in database!");
         return "404";
     }
 
-    @GetMapping("/product/{gtin}")
-    public String consumerView(@PathVariable String gtin, Model model) {
+    @GetMapping("/place/{gln}")
+    public String consumerView(@PathVariable String gln, Model model) {
         TSDProductDataType tsdProductDataType;
         List<JAXBElement> iterator;
         TSDBasicProductInformationModuleType basicProductInformationModuleType;
 
-        String gtin14 = StringUtils.leftPad(gtin, 14, "0");
-        logger.info("Requested GTIN: " + gtin14);
+        String gln14 = StringUtils.leftPad(gln, 14, "0");
+        logger.info("Requested GLN: " + gln14);
 
-        tsdProductDataType = repository.getProductHeader(gtin14);
-        iterator = repository.getModuleInformation(TSDBasicProductInformationModuleType.class, gtin14);
+        tsdProductDataType = repository.getProductHeader(gln14);
+        iterator = repository.getModuleInformation(TSDBasicProductInformationModuleType.class, gln14);
         basicProductInformationModuleType = (TSDBasicProductInformationModuleType)iterator.get(0).getValue();
         if (tsdProductDataType != null) {
             String productName;
-
             productName = basicProductInformationModuleType.getProductName().get(0).getValue();
 
-            model.addAttribute("cloudinaryName", cloudinary.getStringConfig("cloud_name", ""));
             model.addAttribute("productData", tsdProductDataType);
             model.addAttribute("productName", productName);
-            return "consumer/index";
+            return "place/index";
         } else {
             throw new ResourceNotFoundException();
         }

@@ -28,6 +28,7 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 
 import javax.xml.bind.JAXBElement;
+import java.util.List;
 
 class ProductDataRepositoryImpl implements ProductDataRepositoryCustom {
 
@@ -41,7 +42,7 @@ class ProductDataRepositoryImpl implements ProductDataRepositoryCustom {
     }
 
     @Override
-    public Object getModuleInformation(Class moduleClass, String gtin) {
+    public List<JAXBElement> getModuleInformation(Class moduleClass, String gtin) {
         String gtin14 = StringUtils.leftPad(gtin, 14, "0");
         Aggregation aggregation = Aggregation.newAggregation(
                 Aggregation.match(Criteria.where("gtin").is(gtin14)),
@@ -57,7 +58,7 @@ class ProductDataRepositoryImpl implements ProductDataRepositoryCustom {
         AggregationResults<JAXBElement> aggregationResults =
                 mongoTemplate.aggregate(aggregation, TSDProductDataType.class, JAXBElement.class);
         try {
-            return aggregationResults.getMappedResults().get(0).getValue();
+            return aggregationResults.getMappedResults();
         } catch (IndexOutOfBoundsException e) {
             logger.info("NO DATA");
             return null;
