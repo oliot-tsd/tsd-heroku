@@ -34,15 +34,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 
 @Controller
-public class ConsumerViewController {
+public class ProductDataViewController {
     private ProductDataRepository repository;
     private static final Logger logger = LoggerFactory
-            .getLogger(ConsumerViewController.class);
+            .getLogger(ProductDataViewController.class);
     private static final Cloudinary cloudinary = Singleton
             .getCloudinary();
 
     @Autowired
-    public ConsumerViewController(ProductDataRepository repository) {
+    public ProductDataViewController(ProductDataRepository repository) {
         this.repository = repository;
     }
 
@@ -52,7 +52,7 @@ public class ConsumerViewController {
         return "404";
     }
 
-    @GetMapping("/view/{gtin}")
+    @GetMapping("/product/{gtin}")
     public String consumerView(@PathVariable String gtin, Model model) {
         TSDProductDataType tsdProductDataType;
         TSDBasicProductInformationModuleType basicProductInformationModuleType;

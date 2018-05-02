@@ -28,19 +28,19 @@
 <th:block layout:fragment="content">
     <div class="row">
         <div class="col-lg-3">
-            <a th:attrappend="href='/view/' + ${productData.gtin}">
+            <a th:attrappend="href='/product/' + ${productData.gtin}">
                 <h1 class="my-4" th:text="${productName}">Product Name</h1>
             </a>
             <div class="list-group" id="modules">
-                <a th:attrappend="href='/view/' + ${productData.gtin} + '/BasicProductInformation'" class="list-group-item">Basic Product Information</a>
-                <a th:attrappend="href='/view/' + ${productData.gtin} + '/ProductAllergenInformation'" class="list-group-item">Product Allergen Information</a>
-                <a th:attrappend="href='/view/' + ${productData.gtin} + '/ProductClaimsAndEndorsements'" class="list-group-item">Product Claims And Endorsements</a>
-                <a th:attrappend="href='/view/' + ${productData.gtin} + '/ProductInstructions'" class="list-group-item">Product Instructions</a>
-                <a th:attrappend="href='/view/' + ${productData.gtin} + '/ProductQuantityInformation'" class="list-group-item">Product Quantity Information</a>
-                <a th:attrappend="href='/view/' + ${productData.gtin} + '/ProductOriginInformation'" class="list-group-item">Product Origin Information</a>
-                <a th:attrappend="href='/view/' + ${productData.gtin} + '/FoodAndBeverageIngredientInformation'" class="list-group-item">Food And Beverage Ingredient Information</a>
-                <a th:attrappend="href='/view/' + ${productData.gtin} + '/FoodAndBeveragePreparationInformation'" class="list-group-item">Food And Beverage Preparation Information</a>
-                <a th:attrappend="href='/view/' + ${productData.gtin} + '/NutritionalProductInformation'" class="list-group-item">Nutritional Product Information</a>
+                <a th:attrappend="href='/product/' + ${productData.gtin} + '/BasicProductInformation'" class="list-group-item">Basic Product Information</a>
+                <a th:attrappend="href='/product/' + ${productData.gtin} + '/ProductAllergenInformation'" class="list-group-item">Product Allergen Information</a>
+                <a th:attrappend="href='/product/' + ${productData.gtin} + '/ProductClaimsAndEndorsements'" class="list-group-item">Product Claims And Endorsements</a>
+                <a th:attrappend="href='/product/' + ${productData.gtin} + '/ProductInstructions'" class="list-group-item">Product Instructions</a>
+                <a th:attrappend="href='/product/' + ${productData.gtin} + '/ProductQuantityInformation'" class="list-group-item">Product Quantity Information</a>
+                <a th:attrappend="href='/product/' + ${productData.gtin} + '/ProductOriginInformation'" class="list-group-item">Product Origin Information</a>
+                <a th:attrappend="href='/product/' + ${productData.gtin} + '/FoodAndBeverageIngredientInformation'" class="list-group-item">Food And Beverage Ingredient Information</a>
+                <a th:attrappend="href='/product/' + ${productData.gtin} + '/FoodAndBeveragePreparationInformation'" class="list-group-item">Food And Beverage Preparation Information</a>
+                <a th:attrappend="href='/product/' + ${productData.gtin} + '/NutritionalProductInformation'" class="list-group-item">Nutritional Product Information</a>
             </div>
         </div>
         <!-- /.col-lg-3 -->
