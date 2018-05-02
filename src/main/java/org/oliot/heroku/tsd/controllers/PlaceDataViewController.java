@@ -22,6 +22,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.oliot.heroku.tsd.exceptions.ResourceNotFoundException;
 import org.oliot.heroku.tsd.models.ProductDataRepository;
 import org.oliot.heroku.tsd.models.schema.TSDBasicProductInformationModuleType;
+import org.oliot.heroku.tsd.models.schema.TSDImageLinkType;
 import org.oliot.heroku.tsd.models.schema.TSDProductDataType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,6 +35,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.xml.bind.JAXBElement;
 import java.util.List;
+import java.util.Random;
 
 
 @Controller
@@ -57,20 +59,34 @@ public class PlaceDataViewController {
     public String consumerView(@PathVariable String gln, Model model) {
         TSDProductDataType tsdProductDataType;
         List<JAXBElement> iterator;
-        TSDBasicProductInformationModuleType basicProductInformationModuleType;
 
         String gln14 = StringUtils.leftPad(gln, 14, "0");
         logger.info("Requested GLN: " + gln14);
 
         tsdProductDataType = repository.getProductHeader(gln14);
         iterator = repository.getModuleInformation(TSDBasicProductInformationModuleType.class, gln14);
-        basicProductInformationModuleType = (TSDBasicProductInformationModuleType)iterator.get(0).getValue();
         if (tsdProductDataType != null) {
             String productName;
-            productName = basicProductInformationModuleType.getProductName().get(0).getValue();
+            int i = 0;
+            for (JAXBElement element : iterator) {
+                TSDImageLinkType imageLink;
+                Random rand = new Random();
 
+                TSDBasicProductInformationModuleType basicProductInformationModuleType = (TSDBasicProductInformationModuleType)
+                        element.getValue();
+                productName = basicProductInformationModuleType.getProductName().get(0).getValue();
+                imageLink = basicProductInformationModuleType.getImageLink().get(rand.nextInt(
+                        basicProductInformationModuleType.getImageLink().size()));
+
+                model.addAttribute("productName_" + i, productName);
+                logger.info("Product Name: " + productName);
+                model.addAttribute("imageLink_" + i, imageLink.getUrl());
+                logger.info("Image URL: " + imageLink.getUrl());
+
+                i++;
+            }
             model.addAttribute("productData", tsdProductDataType);
-            model.addAttribute("productName", productName);
+
             return "place/index";
         } else {
             throw new ResourceNotFoundException();
