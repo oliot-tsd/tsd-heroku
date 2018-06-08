@@ -13,10 +13,12 @@ services:
   appserver:
     build:
        context: ./
-       dockerfile: Dockerfile
+       dockerfile: Dockerfile-dev
     image: tsd
     environment:
        MONGODB_URI: "mongodb://database:27017/trusted_data"
+       ADMIN_USERNAME: admin
+       ADMIN_PASSWORD: admin
     ports:
       - "8080:8080"
       - "5005:5005"
