@@ -63,11 +63,6 @@ public class HomeController {
         return "404";
     }
 
-    @GetMapping("/")
-    public String index() {
-        return "index";
-    }
-
     @PostMapping("/insert")
     public String insert(@RequestParam("editor") String xmldata) {
         try {

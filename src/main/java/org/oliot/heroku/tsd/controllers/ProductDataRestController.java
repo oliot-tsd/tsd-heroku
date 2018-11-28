@@ -35,66 +35,73 @@ public class ProductDataRestController {
         this.repository = repository;
     }
 
-    @GetMapping("/product/{gtin}/BasicProductInformation")
-    public TSDBasicProductInformationModuleType getBasicProductInformation(@PathVariable String gtin) {
+    @GetMapping("/resource/{epcURI}/MetaInformation")
+    public TSDProductDataType getMetaInformation(@PathVariable String epcURI) {
+        TSDProductDataType header;
+        header = repository.getProductHeader(epcURI);
+        return header;
+    }
+
+    @GetMapping("/resource/{epcURI}/BasicProductInformation")
+    public TSDBasicProductInformationModuleType getBasicProductInformation(@PathVariable String epcURI) {
         List<JAXBElement> iterator;
-        iterator = repository.getModuleInformation(TSDBasicProductInformationModuleType.class, gtin);
+        iterator = repository.getModuleInformation(TSDBasicProductInformationModuleType.class, epcURI);
         return iterator.isEmpty() ? null : (TSDBasicProductInformationModuleType)iterator.get(0).getValue();
     }
 
-    @GetMapping("/product/{gtin}/ProductAllergenInformation")
-    public TSDProductAllergenInformationModuleType getProductAllergenInformation(@PathVariable String gtin) {
+    @GetMapping("/resource/{epcURI}/ProductAllergenInformation")
+    public TSDProductAllergenInformationModuleType getProductAllergenInformation(@PathVariable String epcURI) {
         List<JAXBElement> iterator;
-        iterator = repository.getModuleInformation(TSDProductAllergenInformationModuleType.class, gtin);
+        iterator = repository.getModuleInformation(TSDProductAllergenInformationModuleType.class, epcURI);
         return iterator.isEmpty() ? null : (TSDProductAllergenInformationModuleType)iterator.get(0).getValue();
     }
 
-    @GetMapping("/product/{gtin}/ProductClaimsAndEndorsements")
-    public TSDProductClaimsAndEndorsementsModuleType getProductClaimsAndEndorsements(@PathVariable String gtin) {
+    @GetMapping("/resource/{epcURI}/ProductClaimsAndEndorsements")
+    public TSDProductClaimsAndEndorsementsModuleType getProductClaimsAndEndorsements(@PathVariable String epcURI) {
         List<JAXBElement> iterator;
-        iterator = repository.getModuleInformation(TSDProductClaimsAndEndorsementsModuleType.class, gtin);
+        iterator = repository.getModuleInformation(TSDProductClaimsAndEndorsementsModuleType.class, epcURI);
         return iterator.isEmpty() ? null : (TSDProductClaimsAndEndorsementsModuleType)iterator.get(0).getValue();
     }
 
-    @GetMapping("/product/{gtin}/ProductInstructions")
-    public TSDProductInstructionsModuleType getProductInstructions(@PathVariable String gtin) {
+    @GetMapping("/resource/{epcURI}/ProductInstructions")
+    public TSDProductInstructionsModuleType getProductInstructions(@PathVariable String epcURI) {
         List<JAXBElement> iterator;
-        iterator = repository.getModuleInformation(TSDProductInstructionsModuleType.class, gtin);
+        iterator = repository.getModuleInformation(TSDProductInstructionsModuleType.class, epcURI);
         return iterator.isEmpty() ? null : (TSDProductInstructionsModuleType)iterator.get(0).getValue();
     }
 
-    @GetMapping("/product/{gtin}/ProductQuantityInformation")
-    public TSDProductQuantityInformationModuleType getProductQuantityInformation(@PathVariable String gtin) {
+    @GetMapping("/resource/{epcURI}/ProductQuantityInformation")
+    public TSDProductQuantityInformationModuleType getProductQuantityInformation(@PathVariable String epcURI) {
         List<JAXBElement> iterator;
-        iterator = repository.getModuleInformation(TSDProductQuantityInformationModuleType.class, gtin);
+        iterator = repository.getModuleInformation(TSDProductQuantityInformationModuleType.class, epcURI);
         return iterator.isEmpty() ? null : (TSDProductQuantityInformationModuleType)iterator.get(0).getValue();
     }
 
-    @GetMapping("/product/{gtin}/ProductOriginInformation")
-    public TSDProductOriginInformationModuleType getProductOriginInformation(@PathVariable String gtin) {
+    @GetMapping("/resource/{epcURI}/ProductOriginInformation")
+    public TSDProductOriginInformationModuleType getProductOriginInformation(@PathVariable String epcURI) {
         List<JAXBElement> iterator;
-        iterator = repository.getModuleInformation(TSDProductOriginInformationModuleType.class, gtin);
+        iterator = repository.getModuleInformation(TSDProductOriginInformationModuleType.class, epcURI);
         return iterator.isEmpty() ? null : (TSDProductOriginInformationModuleType)iterator.get(0).getValue();
     }
 
-    @GetMapping("/product/{gtin}/FoodAndBeverageIngredientInformation")
-    public TSDFoodAndBeverageIngredientInformationModuleType getFoodAndBeverageIngredientInformation(@PathVariable String gtin) {
+    @GetMapping("/resource/{epcURI}/FoodAndBeverageIngredientInformation")
+    public TSDFoodAndBeverageIngredientInformationModuleType getFoodAndBeverageIngredientInformation(@PathVariable String epcURI) {
         List<JAXBElement> iterator;
-        iterator = repository.getModuleInformation(TSDFoodAndBeverageIngredientInformationModuleType.class, gtin);
+        iterator = repository.getModuleInformation(TSDFoodAndBeverageIngredientInformationModuleType.class, epcURI);
         return iterator.isEmpty() ? null : (TSDFoodAndBeverageIngredientInformationModuleType)iterator.get(0).getValue();
     }
 
-    @GetMapping("/product/{gtin}/FoodAndBeveragePreparationInformation")
-    public TSDFoodAndBeveragePreparationInformationModuleType getFoodAndBeveragePreparationInformation(@PathVariable String gtin) {
+    @GetMapping("/resource/{epcURI}/FoodAndBeveragePreparationInformation")
+    public TSDFoodAndBeveragePreparationInformationModuleType getFoodAndBeveragePreparationInformation(@PathVariable String epcURI) {
         List<JAXBElement> iterator;
-        iterator = repository.getModuleInformation(TSDFoodAndBeveragePreparationInformationModuleType.class, gtin);
+        iterator = repository.getModuleInformation(TSDFoodAndBeveragePreparationInformationModuleType.class, epcURI);
         return iterator.isEmpty() ? null : (TSDFoodAndBeveragePreparationInformationModuleType)iterator.get(0).getValue();
     }
 
-    @GetMapping("/product/{gtin}/NutritionalProductInformation")
-    public TSDNutritionalProductInformationModuleType getNutritionalProductInformation(@PathVariable String gtin) {
+    @GetMapping("/resource/{epcURI}/NutritionalProductInformation")
+    public TSDNutritionalProductInformationModuleType getNutritionalProductInformation(@PathVariable String epcURI) {
         List<JAXBElement> iterator;
-        iterator = repository.getModuleInformation(TSDNutritionalProductInformationModuleType.class, gtin);
+        iterator = repository.getModuleInformation(TSDNutritionalProductInformationModuleType.class, epcURI);
         return iterator.isEmpty() ? null : (TSDNutritionalProductInformationModuleType)iterator.get(0).getValue();
     }
 }

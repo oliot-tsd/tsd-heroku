@@ -65,21 +65,6 @@
             <version>2.0</version>
         </dependency>
         <dependency>
-            <groupId>com.cloudinary</groupId>
-            <artifactId>cloudinary-taglib</artifactId>
-            <version>1.0.9</version>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudinary</groupId>
-            <artifactId>cloudinary</artifactId>
-            <version>1.0.7</version>
-        </dependency>
-        <dependency>
-            <groupId>com.cloudinary</groupId>
-            <artifactId>cloudinary-http44</artifactId>
-            <version>1.13.0</version>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
         </dependency>
@@ -114,40 +99,6 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <excludeDevtools>false</excludeDevtools>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.eluder.coveralls</groupId>
-                <artifactId>coveralls-maven-plugin</artifactId>
-                <version>4.3.0</version>
-            </plugin>
-            <plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.7.9</version>
-                <executions>
-                    <execution>
-                        <id>prepare-agent</id>
-                        <goals>
-                            <goal>prepare-agent</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>com.heroku.sdk</groupId>
-                <artifactId>heroku-maven-plugin</artifactId>
-                <version>1.1.4</version>
-                <configuration>
-                    <appName>oliot-tsd</appName>
-                    <includeTarget>false</includeTarget>
-                    <includes>
-                        <include>${basedir}/${full-artifact-name}</include>
-                    </includes>
-                    <jdkVersion>${java.version}</jdkVersion>
-                    <processTypes>
-                        <web>java $JAVA_OPTS -jar ${full-artifact-name} $JAR_OPTS</web>
-                    </processTypes>
                 </configuration>
             </plugin>
         </plugins>
