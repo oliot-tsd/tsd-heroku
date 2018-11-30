@@ -30,19 +30,35 @@ The schema and subsequent updates will be provided on the GS1 websites.
     <xsd:element name="busLineInformationModule" type="bus_line_information_module:TSD_BusLineInformationModuleType"/>
     <xsd:complexType name="TSD_BusLineInformationModuleType">
         <xsd:sequence>
-            <xsd:element name="localID" type="xsd:string"/>
-            <xsd:element name="shortID" type="xsd:string"/>
-            <xsd:element name="name" type="xsd:string"/>
-            <xsd:element name="refStartBusStop" type="xsd:string"/>
-            <xsd:element name="refEndBusStop" type="xsd:string"/>
-            <xsd:element name="busLineType" type="xsd:string"/>
-            <xsd:element name="startTime" type="xsd:string"/>
-            <xsd:element name="endTime" type="xsd:string"/>
-            <xsd:element name="intervalNorm" type="xsd:string"/>
-            <xsd:element name="intervalHoli" type="xsd:string"/>
-            <xsd:element name="intervalPeak" type="xsd:string"/>
-            <xsd:element name="dateModified" type="xsd:string"/>
-            <xsd:element name="avpList" type="tsd_common:TSD_AttributeValuePairListType" minOccurs="0"/>
+            <xsd:element name="refBusStops" type="bus_line_information_module:TSD_MultipleValueMetaType"/>
+            <xsd:element name="localID" type="bus_line_information_module:TSD_SingleValueMetaType"/>
+            <xsd:element name="shortID" type="bus_line_information_module:TSD_SingleValueMetaType"/>
+            <xsd:element name="name" type="bus_line_information_module:TSD_SingleValueMetaType"/>
+            <xsd:element name="refStartBusStop" type="bus_line_information_module:TSD_SingleValueMetaType"/>
+            <xsd:element name="refEndBusStop" type="bus_line_information_module:TSD_SingleValueMetaType"/>
+            <xsd:element name="busLineType" type="bus_line_information_module:TSD_SingleValueMetaType"/>
+            <xsd:element name="startTime" type="bus_line_information_module:TSD_SingleValueMetaType"/>
+            <xsd:element name="endTime" type="bus_line_information_module:TSD_SingleValueMetaType"/>
+            <xsd:element name="intervalNorm" type="bus_line_information_module:TSD_SingleValueMetaType"/>
+            <xsd:element name="intervalHoli" type="bus_line_information_module:TSD_SingleValueMetaType"/>
+            <xsd:element name="intervalPeak" type="bus_line_information_module:TSD_SingleValueMetaType"/>
+            <xsd:element name="dateModified" type="bus_line_information_module:TSD_SingleValueMetaType"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="TSD_SingleValueMetaType">
+        <xsd:sequence>
+            <xsd:element name="type" type="xsd:string"/>
+            <xsd:element name="value" type="xsd:string"/>
+            <xsd:element name="metadata" type="tsd_common:TSD_AttributeValuePairListType" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="TSD_MultipleValueMetaType">
+        <xsd:sequence>
+            <xsd:element name="type" type="xsd:string"/>
+            <xsd:element name="value" type="xsd:string" maxOccurs="unbounded"/>
+            <xsd:element name="metadata" type="tsd_common:TSD_AttributeValuePairListType" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
 </xsd:schema>

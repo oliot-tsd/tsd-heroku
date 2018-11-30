@@ -104,4 +104,11 @@ public class ProductDataRestController {
         iterator = repository.getModuleInformation(TSDNutritionalProductInformationModuleType.class, epcURI);
         return iterator.isEmpty() ? null : (TSDNutritionalProductInformationModuleType)iterator.get(0).getValue();
     }
+
+    @GetMapping("/resource/{epcURI}/BusLineInformation")
+    public TSDBusLineInformationModuleType getBusLineInformation(@PathVariable String epcURI) {
+        List<JAXBElement> iterator;
+        iterator = repository.getModuleInformation(TSDBusLineInformationModuleType.class, epcURI);
+        return iterator.isEmpty() ? null : (TSDBusLineInformationModuleType)iterator.get(0).getValue();
+    }
 }
