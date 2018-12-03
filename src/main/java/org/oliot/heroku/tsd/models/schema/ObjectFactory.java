@@ -1181,14 +1181,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link TSDMultipleIntValueMetaType }
-     * 
-     */
-    public TSDMultipleIntValueMetaType createTSDMultipleIntValueMetaType() {
-        return new TSDMultipleIntValueMetaType();
-    }
-
-    /**
      * Create an instance of {@link TSDSingleStringValueMetaType }
      * 
      */
