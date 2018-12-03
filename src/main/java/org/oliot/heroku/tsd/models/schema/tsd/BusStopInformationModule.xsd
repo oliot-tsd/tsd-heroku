@@ -34,6 +34,8 @@ The schema and subsequent updates will be provided on the GS1 websites.
             <xsd:element name="shortID" type="bus_stop_information_module:TSD_SingleStringValueMetaType"/>
             <xsd:element name="busStopCount" type="bus_stop_information_module:TSD_MultipleIntValueMetaType"/>
             <xsd:element name="Name" type="bus_stop_information_module:TSD_SingleStringValueMetaType"/>
+            <xsd:element name="location" type="bus_stop_information_module:TSD_GeoJSONLocationType"/>
+            <xsd:element name="Address" type="bus_stop_information_module:TSD_AddressType"/>
             <xsd:element name="dateModified" type="bus_stop_information_module:TSD_SingleStringValueMetaType"/>
             <xsd:element name="refBusLines" type="bus_stop_information_module:TSD_MultipleStringValueMetaType"/>
         </xsd:sequence>
@@ -60,6 +62,37 @@ The schema and subsequent updates will be provided on the GS1 websites.
             <xsd:element name="type" type="xsd:string"/>
             <xsd:element name="value" type="xsd:integer" maxOccurs="unbounded"/>
             <xsd:element name="metadata" type="tsd_common:TSD_AttributeValuePairListType" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="TSD_GeoJSONLocationType">
+        <xsd:sequence>
+            <xsd:element name="type" type="xsd:string"/>
+            <xsd:element name="value" type="bus_stop_information_module:TSD_GeoJSONPointCoordinateType"/>
+            <xsd:element name="metadata" type="tsd_common:TSD_AttributeValuePairListType" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="TSD_GeoJSONPointCoordinateType">
+        <xsd:sequence>
+            <xsd:element name="type" type="xsd:string"/>
+            <xsd:element name="coordinates" type="xsd:double" minOccurs="2" maxOccurs="2"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="TSD_AddressType">
+        <xsd:sequence>
+            <xsd:element name="type" type="xsd:string"/>
+            <xsd:element name="value" type="bus_stop_information_module:TSD_AddressValueType"/>
+            <xsd:element name="metadata" type="tsd_common:TSD_AttributeValuePairListType" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="TSD_AddressValueType">
+        <xsd:sequence>
+            <xsd:element name="type" type="xsd:string"/>
+            <xsd:element name="addressLocality" type="xsd:string"/>
+            <xsd:element name="addressRegion" type="xsd:string"/>
+            <xsd:element name="postalCode" type="xsd:string"/>
+            <xsd:element name="streetAddress" type="xsd:string"/>
         </xsd:sequence>
     </xsd:complexType>
 </xsd:schema>
