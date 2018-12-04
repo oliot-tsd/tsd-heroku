@@ -39,10 +39,10 @@ public class JAXBElementReadConverter implements Converter<DBObject, JAXBElement
     @Override
     public JAXBElement convert(DBObject dbObject) {
         Class declaredType, scope;
-        QName name = qNameFromString((String)dbObject.get("name"));
+        QName name = qNameFromString((String) dbObject.get("name"));
         Object rawValue = dbObject.get("value");
         try {
-            declaredType = Class.forName((String)dbObject.get("declaredType"));
+            declaredType = Class.forName((String) dbObject.get("declaredType"));
         } catch (ClassNotFoundException e) {
             if (rawValue.getClass().isArray()) declaredType = List.class;
             else declaredType = LinkedHashMap.class;

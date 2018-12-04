@@ -16,7 +16,6 @@
 
 package org.oliot.heroku.tsd.models;
 
-import org.apache.commons.lang3.StringUtils;
 import org.oliot.heroku.tsd.models.schema.TSDProductDataType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,9 +31,9 @@ import java.util.List;
 
 class ProductDataRepositoryImpl implements ProductDataRepositoryCustom {
 
-    private final MongoTemplate mongoTemplate;
     private static final Logger logger = LoggerFactory
             .getLogger(ProductDataRepositoryImpl.class);
+    private final MongoTemplate mongoTemplate;
 
     @Autowired
     public ProductDataRepositoryImpl(MongoTemplate mongoTemplate) {
