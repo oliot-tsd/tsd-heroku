@@ -21,6 +21,8 @@ import org.oliot.heroku.tsd.models.ProductDataRepository;
 import org.oliot.heroku.tsd.models.schema.ObjectFactory;
 import org.oliot.heroku.tsd.models.schema.TSDProductDataType;
 import org.oliot.heroku.tsd.services.ProductDataValidationEventHandler;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,6 +41,9 @@ public class HomeController {
 
     private ProductDataRepository repository;
 
+    private static final Logger logger = LoggerFactory
+            .getLogger(HomeController.class);
+
     @Autowired
     public HomeController(ProductDataRepository repository) {
         this.repository = repository;
@@ -56,6 +61,9 @@ public class HomeController {
             JAXBElement<TSDProductDataType> jaxbElement
                     = (JAXBElement<TSDProductDataType>) unmarshaller.unmarshal(reader);
             TSDProductDataType tsdProductDataType = jaxbElement.getValue();
+
+            logger.info("Adding resource: " + tsdProductDataType.getEpcURI());
+
             repository.save(tsdProductDataType);
         } catch (Exception e) {
             e.printStackTrace();

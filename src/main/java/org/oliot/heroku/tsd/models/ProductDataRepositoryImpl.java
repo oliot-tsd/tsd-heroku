@@ -51,7 +51,7 @@ class ProductDataRepositoryImpl implements ProductDataRepositoryCustom {
                 Aggregation.replaceRoot("productDataRecord.module.any")
         );
 
-        logger.info(aggregation.toString());
+        logger.info("Executing Query: " + aggregation.toString());
 
         AggregationResults<JAXBElement> aggregationResults =
                 mongoTemplate.aggregate(aggregation, TSDProductDataType.class, JAXBElement.class);
