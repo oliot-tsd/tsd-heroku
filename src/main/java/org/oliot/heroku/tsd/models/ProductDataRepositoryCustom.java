@@ -26,4 +26,6 @@ interface ProductDataRepositoryCustom {
     List<JAXBElement> getModuleInformation(Class moduleClass, String epcURI);
 
     TSDProductDataType getProductHeader(String epcURI);
+
+    void insertOrReplace(TSDProductDataType tsdProductDataType);
 }

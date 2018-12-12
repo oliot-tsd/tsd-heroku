@@ -62,9 +62,7 @@ public class HomeController {
                     = (JAXBElement<TSDProductDataType>) unmarshaller.unmarshal(reader);
             TSDProductDataType tsdProductDataType = jaxbElement.getValue();
 
-            logger.info("Adding resource: " + tsdProductDataType.getEpcURI());
-
-            repository.save(tsdProductDataType);
+            repository.insertOrReplace(tsdProductDataType);
         } catch (Exception e) {
             e.printStackTrace();
             throw new BadRequestException();
